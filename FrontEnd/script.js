@@ -61,10 +61,12 @@ fetch("data.json")
     });
 
     products.grades.forEach(grade => {
+        var courseGrade = grade.course + ": " + grade.grade + '%';
+        var courseLink = "https://elearning.mines.edu/courses/${grade.course_id}/grades";
         outGrade += `
             <tr>
                 <td>
-                        ${grade.course + ": " + grade.grade + '%'}
+                        <a href="${courseLink}" target="_blank">${courseGrade}</a>
                 </td>
             </tr>
         `;

@@ -59,7 +59,10 @@ fn parse_grades(responses: Vec<get_grades::ResponseData>) -> Result<Vec<Grade>, 
                         Grade::new(
                             course.name.clone(),
                             course.course_nickname.clone(),
-                            g.unposted_current_score.unwrap(),
+                            match g.unposted_current_score {
+                                Some(score) => score,
+                                None => 100.0,
+                            },
                             u32::from_str_radix(&course.id, 10)?)
                         );
                     break;

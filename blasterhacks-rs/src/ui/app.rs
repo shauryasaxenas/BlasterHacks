@@ -5,45 +5,15 @@ use tui::{
 use std::time::Duration;
 use crate::types::data::Data;
 
-#[derive(PartialEq, Eq, Copy, Clone, Debug)]
-pub enum ActiveBlock {
-    Home,
-    Assignments,
-    Grades,
-}
-
 pub enum Dir {
     Up,
     Down,
-    Left,
-    Right,
-}
-
-pub enum Screen {
-    Default,
-    Help,
-}
-
-pub struct Route {
-    pub screen: Screen,
-    pub selected_block: ActiveBlock,
-    pub active_block: ActiveBlock,
-}
-
-impl Route {
-    pub fn default() -> Route {
-        Route {
-            screen: Screen::Default,
-            selected_block: ActiveBlock::Assignments,
-            active_block: ActiveBlock::Home,
-        }
-    }
 }
 
 pub struct App {
     pub tick_rate: Duration,
-    pub route: Route,
     pub assignments_state: TableState,
+    pub links_state: ListState,
     pub data: Data,
 }
 
@@ -51,58 +21,44 @@ impl App {
     pub fn new(data: Data, tick_rate: Duration) -> App {
         App {
             tick_rate,
-            route: Route::default(),
             assignments_state: TableState::default(),
+            links_state: ListState::default(),
             data,
         }
     }
 
     pub fn mv(&mut self, dir: Dir) {
         match dir {
-            Dir::Left => match self.route.selected_block {
-                ActiveBlock::Grades => self.route.selected_block = ActiveBlock::Assignments,
-                _ => (),
-            },
-            Dir::Right => match self.route.selected_block {
-                ActiveBlock::Assignments => self.route.selected_block = ActiveBlock::Grades,
-                _ => (),
-            },
-            _ => (),
+            Dir::Down => self.next(),
+            Dir::Up => self.prev(),
         }
     }
 
-    pub fn esc(&mut self) {
-        self.route.active_block = ActiveBlock::Home;
-    }
-
-    pub fn enter(&mut self) {
-        self.route.active_block = self.route.selected_block;
-    }
-
-    pub fn get_border_style_from_id(&self, id: ActiveBlock) -> Style {
-        let style = Style::default();
-
-        if id == self.route.active_block {
-            return style.fg(Color::LightGreen).add_modifier(Modifier::BOLD);
-        } else if id == self.route.selected_block {
-            return style.fg(Color::LightBlue).add_modifier(Modifier::BOLD);
-        } else {
-            return style.fg(Color::Gray);
+    pub fn next(&mut self) {
+        if let Some(selected) = self.assignments_state.selected() {
+            let next = if selected >= self.data.assignments.len() - 1 {
+                0
+            } else {
+                selected + 1
+            };
+            self.assignments_state.select(Some(next));
+        } else if self.data.assignments.len() > 0 {
+            self.assignments_state.select(Some(0));
         }
     }
 
-    pub fn get_highlight_style_from_id(&self, id: ActiveBlock) -> Style {
-        let style = Style::default().add_modifier(Modifier::BOLD);
-
-        if id == self.route.active_block {
-            return style.fg(Color::LightGreen);
-        } else if id == self.route.selected_block {
-            return style.fg(Color::LightBlue);
-        } else {
-            return style.fg(Color::White);
+    pub fn prev(&mut self) {
+        if let Some(selected) = self.assignments_state.selected() {
+            let prev = if selected == 0 {
+                self.data.assignments.len() - 1
+            } else {
+                selected - 1
+            };
+            self.assignments_state.select(Some(prev));
+        } else if self.data.assignments.len() > 0 {
+            self.assignments_state.select(Some(0));
         }
     }
-
 
     pub fn on_tick(&mut self) {
         ()

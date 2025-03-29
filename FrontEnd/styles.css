@@ -1,0 +1,29 @@
+/* I always reset all the html elements */
+
+body{
+	font-family: sans-serif;
+	min-height: 100vh;
+	color: #555555;
+}
+
+table{ /* Controls table borders */
+	background-color: #55555500;
+	text-align: left;
+	width:  500px;
+	margin: 10px 0;
+}
+
+table th{
+	padding: 10px 0;
+	background-color: #f4f4f4;
+	/* background-color: #fff; */
+	border:  thin solid #d4d4d4;
+}
+
+table td{
+	text-align: left;
+	padding: 10px;
+	border:  thin solid #d4d4d4;
+	width: 18%;
+	background-color: #fff;
+}

@@ -1,57 +1,77 @@
 console.log("Script is working");
 
 fetch("data.json")
-.then(function(response) {
-    return response.json();
-})
-.then(function(products) {
+.then(response => response.json())
+.then(sections => {
     let placeholderAssignment = document.querySelector("#assignment-output");
     let placeholderGrades = document.querySelector("#grade-output");
-    let outAssignment = "", outGrade = "";
+    let placeholderGroq = document.querySelector("#groq-output");
+    let outAssignment = "", outGrade = "", outGroq = "";
 
-    // Loop through products for assignments
-    products.assignments.forEach(assignment => {
-        var month, day, year, timeHour, timeMin, timeOfDay, full_assignment;
+    // Loop through assignments
+    sections.assignments.forEach(assignment => {
+        const dueDateStr = assignment.date;
+        const dueDate = new Date(dueDateStr);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Normalize today's date
 
-        // Parse the date
-        month = assignment.date.slice(5, 7);
-        day = assignment.date.slice(8, 10);
-        year = assignment.date.slice(2, 4);
+        const timeDiff = dueDate - today;
+        const daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // Convert to days
 
-        timeHour = parseInt(assignment.date.slice(11, 13));
-        timeMin = assignment.date.slice(14, 16);
-        timeOfDay = "AM";
+        // Determine color gradient from Green (14+ days) → Yellow (6 days) → Red (0 days)
+        let color;
+        if (daysRemaining <= 0) {
+            color = "rgb(139, 0, 0)"; // Dark red for due today or overdue
+        } else if (daysRemaining <= 3) {
+            let redIntensity = 255;
+            let greenIntensity = Math.round(50 * (daysRemaining / 3)); // Darker red as daysRemaining decreases
+            color = `rgb(${redIntensity}, ${greenIntensity}, 0)`;
+        } else if (daysRemaining <= 6) {
+            let redIntensity = 255;
+            let greenIntensity = Math.round(200 - (100 * (6 - daysRemaining) / 3)); // Darker yellow as it gets closer
+            color = `rgb(${redIntensity}, ${greenIntensity}, 0)`;
+        } else if (daysRemaining <= 14) {
+            let redIntensity = Math.round(255 * (14 - daysRemaining) / 8); // Green fades towards yellow
+            let greenIntensity = 200;
+            color = `rgb(${redIntensity}, ${greenIntensity}, 0)`;
+        } else {
+            color = "rgb(0, 200, 0)"; // Bright green for 14+ days away
+        }
 
-        // Convert to 12-hour time format
+        // Format date for display
+        let month = dueDateStr.slice(5, 7);
+        let day = dueDateStr.slice(8, 10);
+        let year = dueDateStr.slice(2, 4);
+        let timeHour = parseInt(dueDateStr.slice(11, 13));
+        let timeMin = dueDateStr.slice(14, 16);
+        let timeOfDay = "AM";
+
         if (timeHour > 11) {
-            if (timeHour !== 12) {
-                timeHour = timeHour - 12;
-            }
+            if (timeHour !== 12) timeHour -= 12;
             timeOfDay = "PM";
         }
 
-        // Full assignment name
-        full_assignment = assignment.course + " - " + assignment.name;
+        let formattedDueDate = `${month}/${day}/${year} @ ${timeHour}:${timeMin} ${timeOfDay}`;
+        let fullAssignment = `${assignment.course} - ${assignment.name}`;
 
-        // Due date formatted
-        const dueDate = month + '/' + day + '/' + year + " @ " + timeHour + ":" + timeMin + " " + timeOfDay;
-
-        // Additional assignment info
+        // Additional details
         const additionalInfo = `
             <div class="additional-info">
                 <p>Description: ${assignment.description || "No description available"}</p>
+                <p>
+                    <a href="${assignment.html_url}" target="_blank">Canvas Link</a>
+                </p>
             </div>
         `;
 
-        // Build the output for the assignment row
+        // Assignment row with color-changing button
         outAssignment += `
             <tr class="assignment-row">
                 <td>
-                    <button class="assignment-toggle">
-                        <span style="display: inline-block; text-align: left; width: 76%;">${full_assignment}</span>
-                        <span style="display: inline-block; text-align: right;">${dueDate}</span>
+                    <button class="assignment-toggle" style="background-color: ${color};">
+                        <span style="display: inline-block; text-align: left; width: 76%;">${fullAssignment}</span>
+                        <span style="display: inline-block; text-align: right;">${formattedDueDate}</span>
                     </button>
-            
                     <div class="additional-details" style="display: none;">
                         ${additionalInfo}
                     </div>
@@ -60,34 +80,39 @@ fetch("data.json")
         `;
     });
 
-    products.grades.forEach(grade => {
-        var courseGrade = grade.course + ": " + grade.grade + '%';
-        var courseLink = "https://elearning.mines.edu/courses/${grade.course_id}/grades";
+    // Populate Grades Table
+    sections.grades.forEach(grade => {
+        let courseGrade = `${grade.course}: ${grade.grade}%`;
+        let courseLink = `https://elearning.mines.edu/courses/${grade.course_id}/grades`;
         outGrade += `
             <tr>
                 <td>
-                        <a href="${courseLink}" target="_blank">${courseGrade}</a>
+                    <a href="${courseLink}" target="_blank">${courseGrade}</a>
                 </td>
             </tr>
         `;
     });
 
-    // Insert the assignment rows into the placeholder
+    // Populate Groq AI Table
+    outGroq += `
+        <tr>
+            <td>${sections.plan}</td>
+        </tr>
+    `;
+
+    // Insert content into the HTML
     placeholderAssignment.innerHTML = outAssignment;
     placeholderGrades.innerHTML = outGrade;
+    placeholderGroq.innerHTML = outGroq;
 
-    // Add event listeners to toggle additional assignment details
-    const buttons = document.querySelectorAll('.assignment-toggle');
-    buttons.forEach(button => {
+    // Add event listeners for assignment toggles
+    document.querySelectorAll('.assignment-toggle').forEach(button => {
         button.addEventListener('click', function() {
-            const details = button.nextElementSibling; // This gets the .additional-details div
-            const row = button.closest('tr'); // Get the parent row of the button
+            const details = button.nextElementSibling;
+            const row = button.closest('tr');
             const isVisible = details.style.display === "block";
 
-            // Toggle the visibility of the description
-            details.style.display = isVisible ? "none" : "block"; 
-
-            // Toggle the expanded class to adjust row height
+            details.style.display = isVisible ? "none" : "block";
             row.classList.toggle('expanded');
         });
     });

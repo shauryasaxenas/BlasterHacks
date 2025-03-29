@@ -31,29 +31,35 @@ body {
 /* Layout Container */
 .container {
     display: flex;
-	column-gap: 20px;
+    column-gap: 20px;
     gap: 20px; /* Space between tables */
     padding: 20px;
-    width: 100%; /* Full width container */
+    width: 100%;
     box-sizing: border-box;
 }
 
 /* Assignments Table - Takes 70% of the width */
 .table-70 {
-    width: 70%; /* 70% width for assignments table */
+    width: 70%;
 }
 
-/* Grades Table - Takes 30% of the width */
+/* Right Section: Stacks Grades and Groq AI */
+.right-section {
+    display: flex;
+    flex-direction: column; /* Stack tables vertically */
+    width: 30%;
+    gap: 15px; /* Space between tables */
+}
+
+/* Grades & Groq AI Tables */
 .table-30 {
-	text-align: center;
-    width: 30%; /* 30% width for grades table */
-	max-height: 300px;
+    width: 100%; /* Make both tables full width inside the right section */
 }
 
 /* Tables */
 table {
-	table-layout: fixed;
-    width: 100%; /* Use full space allocated by flex */
+    table-layout: fixed;
+    width: 100%;
     background-color: #fff;
     border-collapse: collapse;
     border-radius: 8px;
@@ -73,9 +79,9 @@ table th {
 
 /* Table Cells */
 table td {
-	word-wrap: break-word;
-	overflow: hidden;
-	text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Alternate Row Colors */
@@ -89,7 +95,7 @@ table tr:hover {
 
 /* Buttons */
 .assignment-toggle {
-    background-color: #4CAF50;
+
     color: rgb(255, 255, 255);
     padding: 10px 10px;
     border: none;
@@ -114,20 +120,19 @@ table tr:hover {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: none;
-	overflow-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 /* Row Expansion for Assignments */
 .assignment-row {
-	width: 100%;
+    width: 100%;
     transition: height 0.3s ease-in-out;
 }
 
 .assignment-row.expanded {
     height: 100%;
-	transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
-
 
 /* Grade Table Styling */
 #grade-output td {

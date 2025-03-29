@@ -1,7 +1,7 @@
 /* Global Styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f7f7f7;
+    background-color: #FBE9D0;
     color: #333;
     margin: 0;
     padding: 0;
@@ -11,9 +11,9 @@ body {
 /* Date Bar (Sticky Header) */
 #date-bar {
     width: 100%;
-    background: linear-gradient(to right, #4CAF50, #45a049);
-    color: white;
-    text-align: left;
+    background: linear-gradient(to right, #244855, #244855);
+    color: #FBE9D0;
+    text-align: center;
     padding: 15px 20px;
     font-size: 20px;
     position: fixed;
@@ -41,6 +41,7 @@ body {
 /* Assignments Table - Takes 70% of the width */
 .table-70 {
     width: 70%;
+	border-radius: 8px;
 }
 
 /* Right Section: Stacks Grades and Groq AI */
@@ -54,13 +55,14 @@ body {
 /* Grades & Groq AI Tables */
 .table-30 {
     width: 100%; /* Make both tables full width inside the right section */
+	max-height: 500px;
 }
 
 /* Tables */
 table {
     table-layout: fixed;
     width: 100%;
-    background-color: #fff;
+    background-color: #FBE9D0;
     border-collapse: collapse;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -70,11 +72,11 @@ table {
 /* Table Headers */
 table th {
     padding: 15px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #244855;
+    color: #FBE9D0;
     text-align: left;
     font-size: 18px;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid #FBE9D0;
 }
 
 /* Table Cells */
@@ -86,7 +88,7 @@ table td {
 
 /* Alternate Row Colors */
 table tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #FBE9D0;
 }
 
 table tr:hover {
@@ -96,7 +98,7 @@ table tr:hover {
 /* Buttons */
 .assignment-toggle {
 
-    color: rgb(255, 255, 255);
+    color: #FBE9D0;
     padding: 10px 10px;
     border: none;
     border-radius: 10px;
@@ -115,8 +117,8 @@ table tr:hover {
 .additional-details {
     margin-top: 10px;
     padding: 15px;
-    background-color: #f9f9f9;
-    border-left: 4px solid #4CAF50;
+    background-color: #FBE9D0;
+    border-left: 4px solid #244855;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: none;
@@ -136,12 +138,12 @@ table tr:hover {
 
 /* Grade Table Styling */
 #grade-output td {
-    background-color: #fafafa;
+    background-color: #FBE9D0;
     font-weight: bold;
 }
 
 #grade-output tr:nth-child(even) td {
-    background-color: #f4f4f4;
+    background-color: #FBE9D0;
 }
 
 /* Responsive Design */

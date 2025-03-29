@@ -7,36 +7,39 @@ fetch("data.json")
     let placeholderGrades = document.querySelector("#grade-output");
     let placeholderGroq = document.querySelector("#groq-output");
     let outAssignment = "", outGrade = "", outGroq = "";
+    var numOfAssignments = 0;
 
     // Loop through assignments
     sections.assignments.forEach(assignment => {
+        
         const dueDateStr = assignment.date;
-        const dueDate = new Date(dueDateStr);
-        const today = new Date();
-        today.setHours(0, 0, 0, 0); // Normalize today's date
+const dueDate = new Date(dueDateStr);
+const today = new Date();
+today.setHours(0, 0, 0, 0); // Normalize today's date
 
-        const timeDiff = dueDate - today;
-        const daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // Convert to days
+const timeDiff = dueDate - today;
+const daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // Convert to days
 
-        // Determine color gradient from Green (14+ days) → Yellow (6 days) → Red (0 days)
-        let color;
-        if (daysRemaining <= 0) {
-            color = "rgb(139, 0, 0)"; // Dark red for due today or overdue
-        } else if (daysRemaining <= 3) {
-            let redIntensity = 255;
-            let greenIntensity = Math.round(50 * (daysRemaining / 3)); // Darker red as daysRemaining decreases
-            color = `rgb(${redIntensity}, ${greenIntensity}, 0)`;
-        } else if (daysRemaining <= 6) {
-            let redIntensity = 255;
-            let greenIntensity = Math.round(200 - (100 * (6 - daysRemaining) / 3)); // Darker yellow as it gets closer
-            color = `rgb(${redIntensity}, ${greenIntensity}, 0)`;
-        } else if (daysRemaining <= 14) {
-            let redIntensity = Math.round(255 * (14 - daysRemaining) / 8); // Green fades towards yellow
-            let greenIntensity = 200;
-            color = `rgb(${redIntensity}, ${greenIntensity}, 0)`;
-        } else {
-            color = "rgb(0, 200, 0)"; // Bright green for 14+ days away
-        }
+// Determine color gradient from softened Green (14+ days) → Yellow (6 days) → Red (0 days)
+let color;
+if (daysRemaining <= 0) {
+    color = "rgb(180, 60, 60)"; // Softer red, but still clearly red
+} else if (daysRemaining <= 3) {
+    let redIntensity = 230;
+    let greenIntensity = Math.round(90 * (daysRemaining / 3)); // Slightly softer transition to red
+    color = `rgb(${redIntensity}, ${greenIntensity}, 60)`;
+} else if (daysRemaining <= 6) {
+    let redIntensity = 235;
+    let greenIntensity = Math.round(180 - (70 * (6 - daysRemaining) / 3)); // Muted yellow
+    color = `rgb(${redIntensity}, ${greenIntensity}, 80)`;
+} else if (daysRemaining <= 14) {
+    let redIntensity = Math.round(120 * (14 - daysRemaining) / 8); // Green fades towards muted yellow
+    let greenIntensity = 190;
+    color = `rgb(${redIntensity}, ${greenIntensity}, 80)`;
+} else {
+    color = "rgb(100, 180, 100)"; // Softer green, but still clear
+}
+
 
         // Format date for display
         let month = dueDateStr.slice(5, 7);
@@ -78,6 +81,7 @@ fetch("data.json")
                 </td>
             </tr>
         `;
+        numOfAssignments++;
     });
 
     // Populate Grades Table
@@ -117,3 +121,14 @@ fetch("data.json")
         });
     });
 });
+
+function updateDateTime() {
+    const dateBar = document.getElementById("date-bar");
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = now.toLocaleDateString(undefined, options);
+    dateBar.textContent = `Today is ${formattedDate}`;
+}
+
+setInterval(updateDateTime, 1000); // Update every second
+updateDateTime(); // Set initial date and time

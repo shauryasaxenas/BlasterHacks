@@ -1,9 +1,0 @@
-query GetCourses {
-  allCourses {
-    name
-    _id
-    term {
-      name
-    }
-  }
-}

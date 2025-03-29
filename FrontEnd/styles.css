@@ -1,29 +1,127 @@
-/* I always reset all the html elements */
-
-body{
-	font-family: sans-serif;
-	min-height: 100vh;
-	color: #555555;
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif; /* Use a clean font */
+    background-color: #f7f7f7; /* Light background color */
+    color: #333; /* Dark text for readability */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
-table{ /* Controls table borders */
-	background-color: #55555500;
-	text-align: left;
-	width:  500px;
-	margin: 10px 0;
+/* Date Bar (Sticky Header) */
+#date-bar {
+    width: 100%;
+    background: linear-gradient(to right, #4CAF50, #45a049); /* Green gradient */
+    color: white;
+    text-align: left;
+    padding: 15px 20px; /* Padding for more space */
+    font-size: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
-table th{
-	padding: 10px 0;
-	background-color: #f4f4f4;
-	/* background-color: #fff; */
-	border:  thin solid #d4d4d4;
+body {
+    margin-top: 60px; /* Space to prevent content from being hidden under the date bar */
 }
 
-table td{
-	text-align: left;
-	padding: 10px;
-	border:  thin solid #d4d4d4;
-	width: 18%;
-	background-color: #fff;
+/* Layout Container */
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Space between the tables */
+    padding: 20px; /* Padding around the content */
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+/* Tables */
+table {
+    background-color: #fff; /* White background for tables */
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for tables */
+}
+
+/* Table Headers */
+table th {
+    padding: 15px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    text-align: left;
+    font-size: 18px;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Table Cells */
+table td {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    font-size: 16px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for alternate rows */
+}
+
+table tr:hover {
+    background-color: #f1f1f1; /* Slightly darker gray on hover */
+}
+
+/* Buttons */
+.assignment-toggle {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    width: 100%; /* Stretch to fill the table cell */
+    text-align: left;
+}
+
+.assignment-toggle:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Additional Details for Assignments */
+.additional-details {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #4CAF50; /* Green left border */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    display: none;
+}
+
+/* Grade Table Styling */
+#grade-output td {
+    background-color: #fafafa; /* Light background for grades */
+    font-weight: bold;
+}
+
+#grade-output tr:nth-child(even) td {
+    background-color: #f4f4f4; /* Slightly darker gray for alternate rows */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack tables vertically on smaller screens */
+    }
+
+    table {
+        width: 100%; /* Make the table fill the screen */
+    }
 }

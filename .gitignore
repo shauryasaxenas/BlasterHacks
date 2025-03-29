@@ -2,3 +2,9 @@ blasterhacks-rs/Cargo.lock
 blasterhacks-rs/target/
 blasterhacks-rs/envvars
 
+# Ignore .DS_Store
+.DS_Store
+
+# Ignore FrontEndv2 folder
+FrontEndv2/
+

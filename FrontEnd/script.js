@@ -5,7 +5,7 @@ fetch("products.json")
     return response.json();
 })
 .then(function(products){
-    let placeholder = document.querySelector("#data-output");
+    let placeholder = document.querySelector("#assignment-output");
     let out = "";
     
     for (let product of products) {
@@ -62,18 +62,22 @@ fetch("products.json")
     });
 });
 
-fetch(grades.json)
+fetch("grades.json")
 .then(function(response){
     return response.json()
 })
 .then(function(elements){
-    let placeholder = document.querySelector("#data-output");
+    let placeholder = document.querySelector("#grade-output");
     let out = "";
     
     for (let element of elements) {
 
         out += `
-            
+        <tr>
+            <td>
+                    ${element.course + ": " + element.grade}
+            </td>
+        </tr>
         `;
     }
 

@@ -31,22 +31,31 @@ body {
 /* Layout Container */
 .container {
     display: flex;
-    justify-content: space-between;
-    gap: 20px; /* Space between the tables */
+    justify-content: flex-start; /* Align tables side by side */
+    gap: 0; /* No space between the tables */
     padding: 20px; /* Padding around the content */
-    max-width: 1200px;
-    margin: auto;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    width: 100%; /* Ensure the container spans the full width of the screen */
+    margin: 0; /* Remove any margin */
 }
 
 /* Tables */
 table {
     background-color: #fff; /* White background for tables */
-    width: 100%;
-    margin: 20px 0;
     border-collapse: collapse;
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for tables */
+    box-sizing: border-box; /* Includes padding/border in width calculation */
+
+}
+
+/* Upcoming Assignments Table */
+.upcoming-assignments {
+    width: 80%; /* Take up 70% of the container width */
+}
+
+/* Grades Table */
+.grades {
+    width: 20%; /* Take up 30% of the container width */
 }
 
 /* Table Headers */
@@ -62,7 +71,7 @@ table th {
 /* Table Cells */
 table td {
     text-align: left;
-    padding: 15px;
+    padding: 5px;
     border-bottom: 1px solid #ddd;
     background-color: #fff;
     font-size: 16px;
@@ -79,10 +88,10 @@ table tr:hover {
 /* Buttons */
 .assignment-toggle {
     background-color: #4CAF50; /* Green background */
-    color: white;
-    padding: 12px 24px;
+    color: rgb(255, 255, 255);
+    padding: 10px 10px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease; /* Smooth transition */

@@ -1,24 +1,28 @@
-console.log("Script is working")
+console.log("Script is working");
 
-fetch("products.json")
-.then(function(response){
+fetch("data.json")
+.then(function(response) {
     return response.json();
 })
-.then(function(products){
-    let placeholder = document.querySelector("#assignment-output");
-    let out = "";
-    
-    for (let product of products) {
+.then(function(products) {
+    let placeholderAssignment = document.querySelector("#assignment-output");
+    let placeholderGrades = document.querySelector("#grade-output");
+    let outAssignment = "", outGrade = "";
+
+    // Loop through products for assignments
+    products.assignments.forEach(assignment => { // Fixed: use products.assignments
         var month, day, year, timeHour, timeMin, timeOfDay, full_assignment;
 
-        month = product.dueAt.slice(5,8);
-        day = product.dueAt.slice(8,10);
-        year = product.dueAt.slice(2,4);
+        // Parse the date
+        month = assignment.date.slice(5, 7);
+        day = assignment.date.slice(8, 10);
+        year = assignment.date.slice(2, 4); // Slice to get the last two digits of the year
 
-        timeHour = parseInt(product.dueAt.slice(11,14));
-        timeMin = product.dueAt.slice(14,16);
+        timeHour = parseInt(assignment.date.slice(11, 13));
+        timeMin = assignment.date.slice(14, 16);
         timeOfDay = "AM";
 
+        // Convert to 12-hour time format
         if (timeHour > 11) {
             if (timeHour !== 12) {
                 timeHour = timeHour - 12;
@@ -26,18 +30,21 @@ fetch("products.json")
             timeOfDay = "PM";
         }
 
-        full_assignment = product.course + " - " + product.name;
+        // Full assignment name
+        full_assignment = assignment.course + " - " + assignment.name;
 
-        dueDate = month + day 
-        + '-' + year + " @ " + timeHour + ":" + timeMin + " " + timeOfDay
+        // Due date formatted
+        const dueDate = month + '/' + day + '/' + year + " @ " + timeHour + ":" + timeMin + " " + timeOfDay;
 
+        // Additional assignment info
         const additionalInfo = `
             <div class="additional-info">
-                <p>Description: ${product.description || "No description available"}</p>
+                <p>Description: ${assignment.description || "No description available"}</p>
             </div>
         `;
 
-        out += `
+        // Build the output for the assignment row
+        outAssignment += `
             <tr>
                 <td>
                     <button class="assignment-toggle">
@@ -48,15 +55,28 @@ fetch("products.json")
                     <div class="additional-details" style="display: none;">
                         ${additionalInfo}
                     </div>
-                    
                 </td>
             </tr>
         `;
-    }
+    });
 
-    placeholder.innerHTML = out;
+    products.grades.forEach(grade => {
 
-    // Now, add event listeners to the buttons after the HTML is loaded
+        outGrade += `
+            <tr>
+                <td>
+                        ${grade.course + ": " + grade.grade + '%'}
+                </td>
+            </tr>
+        `;
+
+    });
+
+    // Insert the assignment rows into the placeholder
+    placeholderAssignment.innerHTML = outAssignment;
+    placeholderGrades.innerHTML = outGrade;
+
+    // Add event listeners to toggle additional assignment details
     const buttons = document.querySelectorAll('.assignment-toggle');
     buttons.forEach(button => {
         button.addEventListener('click', function() {
@@ -65,28 +85,4 @@ fetch("products.json")
             details.style.display = isVisible ? "none" : "block"; // Toggle visibility
         });
     });
-});
-
-fetch("grades.json")
-.then(function(response){
-    return response.json()
-})
-.then(function(elements){
-    let placeholder = document.querySelector("#grade-output");
-    let out = "";
-    
-    for (let element of elements) {
-
-        out += `
-        <tr>
-            <td>
-                    ${element.course + ": " + element.grade}
-            </td>
-        </tr>
-        `;
-    }
-
-    placeholder.innerHTML = out;
-
-    
 });

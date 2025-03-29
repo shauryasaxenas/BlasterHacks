@@ -1,12 +1,15 @@
 use chrono::{DateTime, FixedOffset};
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Assignment {
     pub name: String,
     pub description: Option<String>,
     pub html_url: String,
     pub date: Option<DateTime<FixedOffset>>,
     pub course: String,
+    pub summary: Option<String>,
+    pub relevant_links: Vec<String>,
 }
 
 impl Assignment {
@@ -28,7 +31,9 @@ impl Assignment {
             description,
             html_url,
             date,
-            course
+            course,
+            summary: None,
+            relevant_links: vec![],
         })
     }
 }

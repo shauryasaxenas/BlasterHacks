@@ -40,6 +40,9 @@ fetch("data.json")
         const additionalInfo = `
             <div class="additional-info">
                 <p>Description: ${assignment.description || "No description available"}</p>
+                <p>
+                    <a href="${assignment.html_url}" target="_blank">Canvas Link</a>
+                </p>
             </div>
         `;
 
@@ -61,8 +64,8 @@ fetch("data.json")
     });
 
     products.grades.forEach(grade => {
-        var courseGrade = grade.course + ": " + grade.grade + '%';
-        var courseLink = "https://elearning.mines.edu/courses/${grade.course_id}/grades";
+        var courseGrade = grade.course + ": " + `\n` + grade.grade + '%';
+        var courseLink = `https://elearning.mines.edu/courses/${grade.course_id}/grades`;
         outGrade += `
             <tr>
                 <td>

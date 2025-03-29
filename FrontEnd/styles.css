@@ -45,7 +45,8 @@ body {
 
 /* Grades Table - Takes 30% of the width */
 .table-30 {
-	text-align: center;
+	font-size: 13px;
+	text-align: left;
     width: 30%; /* 30% width for grades table */
 	max-height: 300px;
 }

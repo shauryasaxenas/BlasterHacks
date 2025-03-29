@@ -8,6 +8,7 @@ use serde::{Deserialize, Serialize};
 pub struct Data {
     pub assignments: Vec<Assignment>,
     pub grades: Vec<Grade>,
+    pub plan: String,
 }
 
 impl Data {
@@ -18,8 +19,9 @@ impl Data {
         println!("{} grades found", grades.len());
         groq_analysis(&mut assignments).await?;
         println!("Groq analysis complete");
+        let plan = groq::get_plan(&assignments).await?;
 
-        Ok(Self { assignments, grades })
+        Ok(Self { assignments, grades, plan })
     }
 
     pub fn serialize(&self) -> Result<String, Box<dyn Error>> {

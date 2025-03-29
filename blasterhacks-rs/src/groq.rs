@@ -1,4 +1,5 @@
 use std::error::Error;
+use crate::types::assignment::Assignment;
 use reqwest::Client;
 use serde_json::json;
 
@@ -49,4 +50,15 @@ pub async fn get_links(description: &String) -> Result<Vec<String>, Box<dyn Erro
     }
     let links: Vec<String> = response.split_whitespace().map(|s| s.to_string()).filter(|s| s.contains("https")).collect();
     Ok(links)
+}
+
+pub async fn get_plan(assignments: &Vec<Assignment>) -> Result<String, Box<dyn Error>> {
+    let mut message = String::from("Create a study plan for the following assignments (short paragraph):\n");
+    for assignment in assignments {
+        if let Some(date) = &assignment.date {
+            message.push_str(&format!("{}: {}\n", date.format("%A %d, %H:%M"), assignment.name));
+        }
+    }
+    let response = get_response(message).await?;
+    Ok(response)
 }

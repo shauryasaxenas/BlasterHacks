@@ -198,5 +198,6 @@
       "grade": 93.42,
       "course_id": 72131
     }
-  ]
+  ],
+  "plan": "This is a groq summarized text! I hope you plan to follow it!"
 }

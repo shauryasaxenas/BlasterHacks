@@ -1,33 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!-- Setting the page's character encoding -->
-	<meta charset="UTF-8">
-
-	<!-- The meta viewport will scale my content to any device width -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!-- Link to my stylesheet -->
-	<link rel="stylesheet" href="styles.css">
-	<title>Canvas Lite</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Canvas Lite</title>
 </head>
 <body>
 
     <!-- Date and Time Bar -->
     <div id="date-bar"></div>
 
-	<div class="container">
-            <table class="table-70">
-		        <thead>
-			        <tr>
-				        <th>Upcoming Assignments</th>
-			        </tr>
-		        </thead>
-		        <tbody id="assignment-output">
-			    <!-- Assignments from JS file in here. -->
-		        </tbody>
-	        </table>
-        
+    <div class="container">
+        <table class="table-70">
+            <thead>
+                <tr>
+                    <th>Upcoming Assignments</th>
+                </tr>
+            </thead>
+            <tbody id="assignment-output">
+            <!-- Assignments from JS file in here. -->
+            </tbody>
+        </table>
+
+        <!-- Right Section: Contains Grades and Groq AI tables -->
+        <div class="right-section">
             <table class="table-30">
                 <thead>
                     <tr>
@@ -35,24 +32,36 @@
                     </tr>
                 </thead>
                 <tbody id="grade-output">
-                <!-- Grades from JS file in here-->
+                <!-- Grades from JS file in here -->
                 </tbody>
             </table>
+
+            <table class="table-30">
+                <thead>
+                    <tr>
+                        <th>Groq AI Study Plan</th>
+                    </tr>
+                </thead>
+                <tbody id="groq-output">
+                <!-- Groq AI output from JS file in here -->
+                </tbody>
+            </table>
+        </div>
     </div>
 
-	<script>
+    <script>
         function updateDateTime() {
             const dateBar = document.getElementById("date-bar");
             const now = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const formattedDate = now.toLocaleDateString(undefined, options);
-            dateBar.textContent = `${"Today is " + formattedDate}`;
+            dateBar.textContent = `Today is ${formattedDate}`;
         }
 
         setInterval(updateDateTime, 1000); // Update every second
         updateDateTime(); // Set initial date and time
     </script>
 
-	<script src="script.js"></script> <!-- Link to the JavaScript file -->
+    <script src="script.js"></script> <!-- Link to the JavaScript file -->
 </body>
 </html>

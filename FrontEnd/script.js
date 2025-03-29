@@ -10,13 +10,13 @@ fetch("data.json")
     let outAssignment = "", outGrade = "";
 
     // Loop through products for assignments
-    products.assignments.forEach(assignment => { // Fixed: use products.assignments
+    products.assignments.forEach(assignment => {
         var month, day, year, timeHour, timeMin, timeOfDay, full_assignment;
 
         // Parse the date
         month = assignment.date.slice(5, 7);
         day = assignment.date.slice(8, 10);
-        year = assignment.date.slice(2, 4); // Slice to get the last two digits of the year
+        year = assignment.date.slice(2, 4);
 
         timeHour = parseInt(assignment.date.slice(11, 13));
         timeMin = assignment.date.slice(14, 16);
@@ -45,10 +45,10 @@ fetch("data.json")
 
         // Build the output for the assignment row
         outAssignment += `
-            <tr>
+            <tr class="assignment-row">
                 <td>
                     <button class="assignment-toggle">
-                        <span style="display: inline-block; text-align: left; width: 83%;">${full_assignment}</span>
+                        <span style="display: inline-block; text-align: left; width: 76%;">${full_assignment}</span>
                         <span style="display: inline-block; text-align: right;">${dueDate}</span>
                     </button>
             
@@ -61,7 +61,6 @@ fetch("data.json")
     });
 
     products.grades.forEach(grade => {
-
         outGrade += `
             <tr>
                 <td>
@@ -69,7 +68,6 @@ fetch("data.json")
                 </td>
             </tr>
         `;
-
     });
 
     // Insert the assignment rows into the placeholder
@@ -81,8 +79,14 @@ fetch("data.json")
     buttons.forEach(button => {
         button.addEventListener('click', function() {
             const details = button.nextElementSibling; // This gets the .additional-details div
+            const row = button.closest('tr'); // Get the parent row of the button
             const isVisible = details.style.display === "block";
-            details.style.display = isVisible ? "none" : "block"; // Toggle visibility
+
+            // Toggle the visibility of the description
+            details.style.display = isVisible ? "none" : "block"; 
+
+            // Toggle the expanded class to adjust row height
+            row.classList.toggle('expanded');
         });
     });
 });

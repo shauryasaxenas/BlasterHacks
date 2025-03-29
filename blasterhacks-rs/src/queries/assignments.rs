@@ -1,4 +1,4 @@
-use crate::assignment::Assignment;
+use crate::types::assignment::Assignment;
 use crate::queries::API_URL;
 
 use graphql_client::{GraphQLQuery, Response};

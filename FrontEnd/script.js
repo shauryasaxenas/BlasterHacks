@@ -26,8 +26,10 @@ fetch("products.json")
             timeOfDay = "PM";
         }
 
-        full_assignment = product.course + " - " + product.name + " (" + month + day 
-        + '-' + year + " @" + timeHour + ":" + timeMin + " " + timeOfDay + ")";
+        full_assignment = product.course + " - " + product.name;
+
+        dueDate = month + day 
+        + '-' + year + " @ " + timeHour + ":" + timeMin + " " + timeOfDay
 
         const additionalInfo = `
             <div class="additional-info">
@@ -39,11 +41,14 @@ fetch("products.json")
             <tr>
                 <td>
                     <button class="assignment-toggle">
-                        ${full_assignment}
+                        <span style="display: inline-block; text-align: left; width: 83%;">${full_assignment}</span>
+                        <span style="display: inline-block; text-align: right;">${dueDate}</span>
                     </button>
+            
                     <div class="additional-details" style="display: none;">
                         ${additionalInfo}
                     </div>
+                    
                 </td>
             </tr>
         `;

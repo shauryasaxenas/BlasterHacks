@@ -1,8 +1,8 @@
 /* Global Styles */
 body {
-    font-family: 'Roboto', sans-serif; /* Use a clean font */
-    background-color: #f7f7f7; /* Light background color */
-    color: #333; /* Dark text for readability */
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -11,57 +11,60 @@ body {
 /* Date Bar (Sticky Header) */
 #date-bar {
     width: 100%;
-    background: linear-gradient(to right, #4CAF50, #45a049); /* Green gradient */
+    background: linear-gradient(to right, #4CAF50, #45a049);
     color: white;
     text-align: left;
-    padding: 15px 20px; /* Padding for more space */
+    padding: 15px 20px;
     font-size: 20px;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
     font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 body {
-    margin-top: 60px; /* Space to prevent content from being hidden under the date bar */
+    margin-top: 60px;
 }
 
 /* Layout Container */
 .container {
     display: flex;
-    justify-content: flex-start; /* Align tables side by side */
-    gap: 0; /* No space between the tables */
-    padding: 20px; /* Padding around the content */
-    width: 100%; /* Ensure the container spans the full width of the screen */
-    margin: 0; /* Remove any margin */
+	column-gap: 20px;
+    gap: 20px; /* Space between tables */
+    padding: 20px;
+    width: 100%; /* Full width container */
+    box-sizing: border-box;
+}
+
+/* Assignments Table - Takes 70% of the width */
+.table-70 {
+    width: 70%; /* 70% width for assignments table */
+}
+
+/* Grades Table - Takes 30% of the width */
+.table-30 {
+	text-align: center;
+    width: 30%; /* 30% width for grades table */
+	max-height: 300px;
 }
 
 /* Tables */
 table {
-    background-color: #fff; /* White background for tables */
+	table-layout: fixed;
+    width: 100%; /* Use full space allocated by flex */
+    background-color: #fff;
     border-collapse: collapse;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for tables */
-    box-sizing: border-box; /* Includes padding/border in width calculation */
-
-}
-
-/* Upcoming Assignments Table */
-.upcoming-assignments {
-    width: 80%; /* Take up 70% of the container width */
-}
-
-/* Grades Table */
-.grades {
-    width: 20%; /* Take up 30% of the container width */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
 /* Table Headers */
 table th {
     padding: 15px;
-    background-color: #4CAF50; /* Green background */
+    background-color: #4CAF50;
     color: white;
     text-align: left;
     font-size: 18px;
@@ -70,37 +73,36 @@ table th {
 
 /* Table Cells */
 table td {
-    text-align: left;
-    padding: 5px;
-    border-bottom: 1px solid #ddd;
-    background-color: #fff;
-    font-size: 16px;
+	word-wrap: break-word;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
+/* Alternate Row Colors */
 table tr:nth-child(even) {
-    background-color: #f9f9f9; /* Light gray for alternate rows */
+    background-color: #f9f9f9;
 }
 
 table tr:hover {
-    background-color: #f1f1f1; /* Slightly darker gray on hover */
+    background-color: #f1f1f1;
 }
 
 /* Buttons */
 .assignment-toggle {
-    background-color: #4CAF50; /* Green background */
+    background-color: #4CAF50;
     color: rgb(255, 255, 255);
     padding: 10px 10px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease; /* Smooth transition */
-    width: 100%; /* Stretch to fill the table cell */
+    width: 100%;
     text-align: left;
+    transition: background-color 0.3s ease;
 }
 
 .assignment-toggle:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049;
 }
 
 /* Additional Details for Assignments */
@@ -108,20 +110,33 @@ table tr:hover {
     margin-top: 10px;
     padding: 15px;
     background-color: #f9f9f9;
-    border-left: 4px solid #4CAF50; /* Green left border */
+    border-left: 4px solid #4CAF50;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: none;
+	overflow-wrap: break-word;
 }
+
+/* Row Expansion for Assignments */
+.assignment-row {
+	width: 100%;
+    transition: height 0.3s ease-in-out;
+}
+
+.assignment-row.expanded {
+    height: 100%;
+	transition: all 0.3s ease-in-out;
+}
+
 
 /* Grade Table Styling */
 #grade-output td {
-    background-color: #fafafa; /* Light background for grades */
+    background-color: #fafafa;
     font-weight: bold;
 }
 
 #grade-output tr:nth-child(even) td {
-    background-color: #f4f4f4; /* Slightly darker gray for alternate rows */
+    background-color: #f4f4f4;
 }
 
 /* Responsive Design */
@@ -131,6 +146,6 @@ table tr:hover {
     }
 
     table {
-        width: 100%; /* Make the table fill the screen */
+        width: 100%; /* Stretch tables to screen width */
     }
 }

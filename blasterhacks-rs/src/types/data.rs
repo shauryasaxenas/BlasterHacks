@@ -1,7 +1,7 @@
 use std::error::Error;
 use crate::groq;
-use crate::assignment::Assignment;
-use crate::grade::Grade;
+use crate::types::assignment::Assignment;
+use crate::types::grade::Grade;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]

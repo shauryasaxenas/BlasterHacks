@@ -1,5 +1,5 @@
 use crate::queries::API_URL;
-use crate::grade::Grade;
+use crate::types::grade::Grade;
 
 use graphql_client::{GraphQLQuery, Response};
 use reqwest;

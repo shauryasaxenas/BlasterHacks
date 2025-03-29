@@ -61,3 +61,23 @@ fetch("products.json")
         });
     });
 });
+
+fetch(grades.json)
+.then(function(response){
+    return response.json()
+})
+.then(function(elements){
+    let placeholder = document.querySelector("#data-output");
+    let out = "";
+    
+    for (let element of elements) {
+
+        out += `
+            
+        `;
+    }
+
+    placeholder.innerHTML = out;
+
+    
+});

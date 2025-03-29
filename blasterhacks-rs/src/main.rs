@@ -14,8 +14,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
     // let course_ids = vec![71983, 72567, 71415, 72131]; // Shaurya course ids
     // let data = Data::from_course_ids(course_ids).await?;
 
-    let data = Data::deserialize_from_file("data.json")?;
-    // data.serialize_to_file("data.json")?;
+    let mut data = Data::deserialize_from_file("data.json")?;
+    // types::data::groq_analysis(&mut data.assignments).await?;
+    data.serialize_to_file("data.json")?;
     let res = ui::run(data);
     match res {
         Ok(_) => (),

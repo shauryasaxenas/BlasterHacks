@@ -1,3 +1,4 @@
+use crate::types::link::Link;
 use chrono::{DateTime, FixedOffset};
 use serde::{Deserialize, Serialize};
 
@@ -9,7 +10,7 @@ pub struct Assignment {
     pub date: Option<DateTime<FixedOffset>>,
     pub course: String,
     pub summary: Option<String>,
-    pub relevant_links: Vec<String>,
+    pub relevant_links: Vec<Link>,
 }
 
 impl Assignment {

@@ -1,5 +1,6 @@
 use std::error::Error;
 use crate::types::assignment::Assignment;
+use crate::types::link::Link;
 use reqwest::Client;
 use serde_json::json;
 
@@ -40,15 +41,24 @@ pub async fn get_summary(description: &String) -> Result<String, Box<dyn Error>>
     return Ok(response);
 }
 
-pub async fn get_links(description: &String) -> Result<Vec<String>, Box<dyn Error>> {
-    let response = match get_response("You will recieve HTML with that describes a certain university assignment. Extract all the links from the text and return them in a space separated string. Ignore .js and .css files. If there are no links respond with the word \"None\"".to_string() + &description).await {
+pub async fn get_links(description: &String) -> Result<Vec<Link>, Box<dyn Error>> {
+    let response = match get_response("You will recieve HTML with that describes a certain university assignment. Extract all the links from the text and return them one line at a time with the format title,link. Ignore .js and .css files. If there are no links respond with the word \"None\"".to_string() + &description).await {
         Ok(response) => response,
         Err(_) => "None".to_string()
     };
     if response == "None" {
         return Ok(vec![]);
     }
-    let links: Vec<String> = response.split_whitespace().map(|s| s.to_string()).filter(|s| s.contains("https")).collect();
+    let links: Vec<Link> = response.lines()
+        .filter_map(|line| {
+            let parts: Vec<&str> = line.split(',').collect();
+            if parts.len() == 2 {
+                Some(Link::new(parts[1].to_string(), parts[0].to_string()))
+            } else {
+                None
+            }
+        })
+        .collect();
     Ok(links)
 }
 

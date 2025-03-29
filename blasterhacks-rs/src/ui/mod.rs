@@ -137,7 +137,7 @@ fn render_summary<B: Backend>(f: &mut Frame<B>, app: &mut App, layout_chunk: Rec
 fn render_links<B: Backend>(f: &mut Frame<B>, app: &mut App, layout_chunk: Rect) {
     if let Some(i) = app.assignments_state.selected() {
         let links = app.data.assignments[i].relevant_links.clone().into_iter().map(|link| {
-            ListItem::new(link)
+            ListItem::new(link.title)
         }).collect::<Vec<_>>();
         if links.is_empty() {
             let empty = Paragraph::new("No links available")
@@ -151,12 +151,14 @@ fn render_links<B: Backend>(f: &mut Frame<B>, app: &mut App, layout_chunk: Rect)
             f.render_widget(empty, layout_chunk);
             return;
         }
+        let selected_style = Style::default().fg(Color::LightGreen).add_modifier(Modifier::BOLD);
         let table = List::new(links)
             .block(
                 Block::default()
                 .borders(Borders::ALL)
                 .title("Links")
-            );
+            )
+            .highlight_style(selected_style);
         f.render_stateful_widget(table, layout_chunk, &mut app.links_state);
         return;
     }
@@ -253,6 +255,9 @@ fn handle_input(app: &mut App) -> Result<bool, Box<dyn Error>> {
                 KeyCode::Char('j') => app.mv(Dir::Down),
                 KeyCode::Char('k') => app.mv(Dir::Up),
                 KeyCode::Char('q') => return Ok(true),
+                KeyCode::Char('o') => app.open(),
+                KeyCode::Enter => app.enter(),
+                KeyCode::Esc => app.esc(),
                 _ => (),
             },
             KeyModifiers::CONTROL => match key.code {

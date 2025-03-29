@@ -1,0 +1,14 @@
+query GetAssignments($courseId: ID!) {
+    course(id: $courseId) {
+        name
+            assignmentsConnection {
+                nodes {
+                    name
+                        description
+                        htmlUrl
+                        dueAt
+                }
+            }
+        courseNickname
+    }
+}

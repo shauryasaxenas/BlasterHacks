@@ -1,0 +1,14 @@
+query GetGrades($courseId: ID!) {
+    course(id: $courseId) {
+        _id
+        name
+        courseNickname
+        enrollmentsConnection {
+            nodes {
+                grades {
+                    unpostedCurrentScore
+                }
+            }
+        }
+    }
+}

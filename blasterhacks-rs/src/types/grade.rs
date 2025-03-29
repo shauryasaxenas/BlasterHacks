@@ -2,8 +2,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
 pub struct Grade {
-    course: String,
-    grade: f64,
+    pub course: String,
+    pub grade: f64,
     course_id: u32,
 }
 

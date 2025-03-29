@@ -4,6 +4,7 @@ use tokio;
 mod types;
 mod queries;
 mod groq;
+mod ui;
 
 use types::data::Data;
 
@@ -14,6 +15,11 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     let data = Data::deserialize_from_file("data.json")?;
     data.serialize_to_file("data.json")?;
+    let res = ui::run(data);
+    match res {
+        Ok(_) => (),
+        Err(e) => eprintln!("Error: {}", e),
+    }
 
     Ok(())
 }

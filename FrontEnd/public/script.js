@@ -58,6 +58,8 @@ function fetchData() {
             let timeHour = parseInt(dueDateStr.slice(11, 13));
             let timeMin = dueDateStr.slice(14, 16);
             let timeOfDay = "AM";
+            var description;
+            var AIorSummary;
 
             if (timeHour > 11) {
                 if (timeHour !== 12) timeHour -= 12;
@@ -67,10 +69,19 @@ function fetchData() {
             let formattedDueDate = `${month}/${day}/${year} @ ${timeHour}:${timeMin} ${timeOfDay}`;
             let fullAssignment = `${assignment.course} - ${assignment.name}`;
 
+            if (assignment.has_description == true) {
+                description = assignment.description;
+                AIorSummary = "Description";
+            }
+            else {
+                description = assignment.summary;
+                AIorSummary = "AI Summary";
+            }
+
             // Additional details
             const additionalInfo = `
                 <div class="additional-info">
-                    <p>Description: ${assignment.description || "No description available"}</p>
+                    <p>${AIorSummary}: \n ${description || "No description available"}</p>
                     <p>
                         <a href="${assignment.html_url}" target="_blank">Canvas Link</a>
                     </p>

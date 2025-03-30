@@ -6,13 +6,14 @@
       "html_url": "https://elearning.mines.edu/courses/72125/assignments/453253",
       "date": "2025-03-30T23:59:00-06:00",
       "course": "MATH 213",
-      "summary": "The assignment \"16.7 HW - Change of Variables in Multiple Integrals\" is a homework problem focused on the concept of changing variables in multiple integrals, a crucial technique in multivariable calculus. The assignment likely requires students to apply the change of variables formula to evaluate double or triple integrals, which involves transforming the region of integration and the integrand to a more convenient coordinate system. This technique is useful for simplifying complex integrals and making them more manageable. Students will need to identify the appropriate change of variables, compute the Jacobian determinant, and apply the change of variables formula to evaluate the given integrals, demonstrating their understanding of this important concept in multivariable calculus.",
+      "summary": "This assignment, \"Change of Variables in Multiple Integrals,\" focuses on a crucial technique in multivariable calculus. The objective is to apply the change of variables formula to simplify and evaluate multiple integrals. Students will learn to transform double or triple integrals from one coordinate system to another, such as from Cartesian to polar, cylindrical, or spherical coordinates, in order to make the integration process more manageable. By mastering this technique, students will be able to tackle complex integration problems that involve awkwardly shaped regions or complicated functions, and develop a deeper understanding of the relationships between different coordinate systems and their applications in calculus.",
       "relevant_links": [
         {
           "url": "https://elearning.mines.edu/courses/72125/assignments/453253",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": false
     },
     {
       "name": "LGA 24 - Heaps and priority queues",
@@ -20,7 +21,7 @@
       "html_url": "https://elearning.mines.edu/courses/72567/assignments/469689",
       "date": "2025-03-31T11:00:00-06:00",
       "course": "CSCI 220",
-      "summary": "This university assignment is related to the topic of heaps and heapsort, with relevant readings from Chapter 6 of the book \"CLRS\" and accompanying lecture videos on priority queues, heaps introduction, heap operations, and heapsort. The assignment instructions are provided in a PDF file titled \"lga-24-heap.pdf\", and an answer key is forthcoming. Additional resources include links to video lectures and slides on the topic, covering the priority queue abstract data type, the heap data structure, inserting and removing elements, and sorting with heaps.",
+      "summary": "The university assignment is related to the topic of heaps, specifically heapsort. The assignment instructions are available in a PDF file, and additional resources include readings from the book \"CLRS\" (Chapter 6, \"Heapsort\") and lecture videos on priority queues, heaps introduction, heap operations, and heapsort. The lecture videos are accompanied by slides, and the topics covered include the priority queue abstract data type, the heap data structure, inserting elements and removing the min or max element, and sorting with heaps. An answer key for the assignment will be provided soon.",
       "relevant_links": [
         {
           "url": "https://elearning.mines.edu/courses/72567/assignments/469689",
@@ -36,7 +37,7 @@
         },
         {
           "url": "https://youtu.be/tooZ0YfuOao",
-          "title": "Unknown"
+          "title": "unkown"
         },
         {
           "url": "https://mediaspace.mines.edu/media/CSCI220+%7C+Priority+Queues/1_sk1592em/363705742",
@@ -45,10 +46,6 @@
         {
           "url": "https://elearning.mines.edu/courses/72567/files/7404039?verifier=Eg6OF1WdXBMksbn8ydkqZup7yRni5WDnbWlX3SGI&wrap=1",
           "title": "heaps.pptx"
-        },
-        {
-          "url": "https://elearning.mines.edu/courses/48454/files/5222829/download?download_frd=1",
-          "title": "33-heaps.pdf"
         },
         {
           "url": "https://mediaspace.mines.edu/media/CSCI220+%7C+Introduction+to+Heaps/1_19nl4wjn/363705742",
@@ -62,7 +59,8 @@
           "url": "https://mediaspace.mines.edu/media/CSCI220+%7C+Heapsort/1_yp5scl56/363705742",
           "title": "Heapsort"
         }
-      ]
+      ],
+      "has_description": true
     },
     {
       "name": "WebAssign Homework #9 (7.2, 7.3, 7.4, 7.5)",
@@ -76,7 +74,8 @@
           "url": "https://elearning.mines.edu/courses/71447/assignments/481754",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": false
     },
     {
       "name": "Worksheet 10",
@@ -84,17 +83,18 @@
       "html_url": "https://elearning.mines.edu/courses/72125/assignments/453556",
       "date": "2025-03-31T23:59:59-06:00",
       "course": "MATH 213",
-      "summary": "The assignment requires students to submit Worksheet 10 by the due date specified by their instructor. The worksheet, titled \"MATH213-Worksheet10.pdf\", is available as a downloadable link, and students are expected to complete and submit it on time.",
+      "summary": "The assignment requires students to submit Worksheet 10 by the due date specified by their instructor. The worksheet, titled \"MATH213-Worksheet10.pdf\", is available for download through a provided link, and students are expected to complete it and submit it on time.",
       "relevant_links": [
         {
           "url": "https://elearning.mines.edu/courses/72125/assignments/453556",
           "title": "Canvas"
         },
         {
-          "url": "https://elearning.mines.edu/courses/72125/files/7452239?verifier=4CMUsu87k4i79S4iRhamEmhWcYkkJ1VnHnmkbEH3&wrap=1",
+          "url": " https://elearning.mines.edu/courses/72125/files/7452239?verifier=4CMUsu87k4i79S4iRhamEmhWcYkkJ1VnHnmkbEH3&wrap=1",
           "title": "MATH213-Worksheet10.pdf"
         }
-      ]
+      ],
+      "has_description": true
     },
     {
       "name": "Topic 3F WebWork Homework",
@@ -102,13 +102,14 @@
       "html_url": "https://elearning.mines.edu/courses/72767/assignments/454205",
       "date": "2025-04-01T08:00:00-06:00",
       "course": "PHGN 200",
-      "summary": "The university assignment requires completing the Topic 3F WebWork Homework, which is linked and must be completed by the listed due date. There is no submission required on Canvas, but grades from the WebWork Homework will be imported to Canvas for tracking purposes.",
+      "summary": "The assignment requires completing the Topic 3F WebWork Homework, which can be accessed through a provided link. There is no submission required on Canvas, but students should be aware of the listed due date. The grades for the WebWork Homework will be automatically imported to Canvas.",
       "relevant_links": [
         {
           "url": "https://elearning.mines.edu/courses/72767/assignments/454205",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": true
     },
     {
       "name": "Topic 3G WebWork Homework",
@@ -116,13 +117,14 @@
       "html_url": "https://elearning.mines.edu/courses/72767/assignments/454209",
       "date": "2025-04-01T08:00:00-06:00",
       "course": "PHGN 200",
-      "summary": "The university assignment is to complete the Topic 3G WebWork Homework, which can be accessed through a provided link. There is no submission required on Canvas, however, students should be aware of the listed due date. The grades for the WebWork Homework will be automatically imported to Canvas.",
+      "summary": "The university assignment requires students to complete the Topic 3G WebWork Homework, which can be accessed through a provided link. There is no submission required on Canvas, but students should be aware of the specified due date. The grades for the WebWork Homework will be automatically imported to Canvas, allowing students to track their progress.",
       "relevant_links": [
         {
           "url": "https://elearning.mines.edu/courses/72767/assignments/454209",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": true
     },
     {
       "name": "Topic 4A Studio Points",
@@ -136,7 +138,8 @@
           "url": "https://elearning.mines.edu/courses/72767/assignments/454215",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": false
     },
     {
       "name": "Worksheet 9 - Laplace Transforms and the Unit Step Function",
@@ -144,7 +147,7 @@
       "html_url": "https://elearning.mines.edu/courses/71447/assignments/462949",
       "date": "2025-04-02T23:59:59-06:00",
       "course": "MATH 225",
-      "summary": "No summary can be generated.",
+      "summary": "This assignment, Worksheet 9 - Laplace Transforms and the Unit Step Function, is focused on applying Laplace transforms to solve differential equations and understanding the role of the unit step function in these transformations. The unit step function, also known as the Heaviside step function, is used to model sudden changes or discontinuities in a system, and students are expected to learn how to incorporate this function into Laplace transforms. The assignment likely involves solving problems that require finding the Laplace transform of a function, applying the unit step function to model real-world scenarios, and using the inverse Laplace transform to solve differential equations, with the goal of developing problem-solving skills and understanding the practical applications of Laplace transforms in engineering and other fields.",
       "relevant_links": [
         {
           "url": "https://elearning.mines.edu/courses/71447/assignments/462949",
@@ -158,7 +161,8 @@
           "url": "https://elearning.mines.edu/courses/71447/files/7745255?wrap=1",
           "title": "AK-MATH225S25-WS9.pdf"
         }
-      ]
+      ],
+      "has_description": false
     },
     {
       "name": "Exam 2",
@@ -172,7 +176,8 @@
           "url": "https://elearning.mines.edu/courses/71447/assignments/462923",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": false
     },
     {
       "name": "Topic 4B Studio Points",
@@ -186,7 +191,8 @@
           "url": "https://elearning.mines.edu/courses/72767/assignments/454219",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": false
     },
     {
       "name": "Participation Quiz 15",
@@ -200,7 +206,8 @@
           "url": "https://elearning.mines.edu/courses/72125/assignments/482220",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": false
     },
     {
       "name": "HW10",
@@ -208,41 +215,26 @@
       "html_url": "https://elearning.mines.edu/courses/71983/assignments/482199",
       "date": "2025-04-04T23:59:59-06:00",
       "course": "CSCI 341",
-      "summary": "This is an individual assignment for the CSCI 341 course, and students are expected to work alone and not share their solutions with peers. The homework problems can be downloaded in PDF or Word format, and students should follow the instructions within the file. They can choose to handwrite and scan their work, but it must be legible and include their name on each page. The completed homework should be submitted as a PDF file named CSCI341_HW10_YourName.pdf, replacing \"YourName\" with their actual name, through the Gradescope link provided. Students are encouraged to visit office hours for assistance if needed.",
+      "summary": "This is an individual assignment for the CSCI 341 course, where students are expected to complete homework problems on their own without discussing solutions with peers. The homework problems can be downloaded in PDF or Word format, and students are required to follow the instructions provided. They can choose to handwrite and scan their work, but it must be legible and include their name on each page. The completed homework should be submitted as a PDF file named \"CSCI341_HW10_YourName.pdf\" through the Gradescope link provided. Students can seek assistance during office hours or by arranging a meeting with an instructor or TA.",
       "relevant_links": [
         {
           "url": "https://elearning.mines.edu/courses/71983/assignments/482199",
           "title": "Canvas"
         },
         {
-          "url": " https://elearning.mines.edu/courses/71983/files/7379623?verifier=xqahxTu8ElKNMcxr7qNJXODmLTd3S3ULadsKnxz0&wrap=1",
+          "url": "https://elearning.mines.edu/courses/71983/files/7379623?verifier=xqahxTu8ElKNMcxr7qNJXODmLTd3S3ULadsKnxz0&wrap=1",
           "title": "CS@Mines Collaboration Policy"
         },
         {
-          "url": " https://elearning.mines.edu/courses/71983/files/7755109?verifier=Kix43k2zuEbkojBpjxVwnsshy0GzTnchXsZUXoUO&wrap=1",
+          "url": "https://elearning.mines.edu/courses/71983/files/7755109?verifier=Kix43k2zuEbkojBpjxVwnsshy0GzTnchXsZUXoUO&wrap=1",
           "title": "PDF"
         },
         {
-          "url": " https://elearning.mines.edu/courses/71983/files/7393196/download?verifier=q4OChjqX4UNcj0fm4agDT8rRW6kwLziLO2wyF1XB",
-          "title": "Download PDF"
-        },
-        {
-          "url": " https://elearning.mines.edu/courses/71983/files/7755110?verifier=b2U5GV2hltL6Cuv6Dndw9NjQgTkLYDVY9nWcxVDe&wrap=1",
+          "url": "https://elearning.mines.edu/courses/71983/files/7755110?verifier=b2U5GV2hltL6Cuv6Dndw9NjQgTkLYDVY9nWcxVDe&wrap=1",
           "title": "WORD"
-        },
-        {
-          "url": " https://elearning.mines.edu/courses/71983/files/7393195/download?verifier=ODCS81TBcoeQPKcxYFLXGBeQbUtVn8yAwfhIQKpx ",
-          "title": "Download WORD"
-        },
-        {
-          "url": " https://elearning.mines.edu/courses/71983/files/7379623/download?verifier=xqahxTu8ElKNMcxr7qNJXODmLTd3S3ULadsKnxz0 ",
-          "title": "Download CS@Mines Collaboration Policy"
-        },
-        {
-          "url": " https://elearning.mines.edu/courses/36681/files/3839204/download?download_frd=1",
-          "title": "Download CS@Mines Collaboration Policy"
         }
-      ]
+      ],
+      "has_description": true
     },
     {
       "name": "17.1 HW - Vector Fields",
@@ -250,13 +242,14 @@
       "html_url": "https://elearning.mines.edu/courses/72125/assignments/453269",
       "date": "2025-04-06T23:59:00-06:00",
       "course": "MATH 213",
-      "summary": "The assignment \"17.1 HW - Vector Fields\" is a homework assignment that focuses on vector fields, a fundamental concept in mathematics and physics. Vector fields are functions that assign a vector to each point in a given space, and they are used to describe various physical phenomena, such as the flow of fluids, electromagnetic forces, and gravitational fields. The assignment likely requires students to demonstrate their understanding of vector fields by performing calculations, visualizing vector fields, and applying them to real-world problems. This may involve tasks such as finding the divergence and curl of a vector field, identifying properties of vector fields like conservative or solenoidal fields, and using vector fields to model and analyze physical systems, ultimately helping students develop a deeper understanding of the mathematical concepts and their practical applications.",
+      "summary": "The assignment \"17.1 HW - Vector Fields\" is a homework assignment focused on the mathematical concept of vector fields. In this assignment, students are likely tasked with understanding and working with vector fields, which are functions that assign a vector to each point in a given space. The assignment may involve visualizing and analyzing vector fields, calculating their divergence and curl, and understanding how they relate to physical phenomena such as fluid flow, electric fields, and magnetic fields. Students may be required to solve problems involving vector field equations, identify properties of vector fields, and apply vector field concepts to real-world scenarios, demonstrating their understanding of the mathematical concepts and their ability to apply them to solve problems.",
       "relevant_links": [
         {
           "url": "https://elearning.mines.edu/courses/72125/assignments/453269",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": false
     },
     {
       "name": "17.5 HW - Divergence and Curl",
@@ -264,13 +257,14 @@
       "html_url": "https://elearning.mines.edu/courses/72125/assignments/453367",
       "date": "2025-04-06T23:59:00-06:00",
       "course": "MATH 213",
-      "summary": "The assignment \"17.5 HW - Divergence and Curl\" is a homework assignment focused on the mathematical concepts of divergence and curl in vector calculus. Divergence measures how much a vector field diverges or \"spreads out\" from a given point, while curl measures the rotation or \"curl\" of the vector field around a point. The assignment likely requires students to apply these concepts to solve problems involving vector fields, such as calculating the divergence and curl of given vector fields, identifying the physical interpretations of these quantities, and using them to analyze and visualize the behavior of vector fields in various contexts, such as fluid dynamics, electromagnetism, or other areas of physics and engineering. By completing this assignment, students will demonstrate their understanding of these fundamental concepts and their ability to apply them to solve problems in mathematics and physics.",
+      "summary": "The assignment \"17.5 HW - Divergence and Curl\" is a homework problem set focused on the mathematical concepts of divergence and curl, which are fundamental in vector calculus. The assignment is likely to involve calculating and applying these concepts to various vector fields, with the goal of understanding how they describe the behavior of fluids, forces, or other physical phenomena. Students will probably be asked to compute the divergence and curl of given vector fields, interpret the results in terms of physical quantities such as flux or rotation, and apply these concepts to solve problems in physics, engineering, or other fields. The assignment aims to reinforce the students' understanding of the theoretical concepts and their ability to apply them to practical problems, developing their skills in mathematical modeling and problem-solving.",
       "relevant_links": [
         {
           "url": "https://elearning.mines.edu/courses/72125/assignments/453367",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": false
     },
     {
       "name": "Worksheet 11",
@@ -284,7 +278,8 @@
           "url": "https://elearning.mines.edu/courses/72125/assignments/453564",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": false
     },
     {
       "name": "Exam #2",
@@ -298,7 +293,8 @@
           "url": "https://elearning.mines.edu/courses/72125/assignments/453457",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": false
     },
     {
       "name": "Topic 4A WebWork Homework",
@@ -306,13 +302,14 @@
       "html_url": "https://elearning.mines.edu/courses/72767/assignments/454216",
       "date": "2025-04-08T08:00:00-06:00",
       "course": "PHGN 200",
-      "summary": "The assignment requires completing the Topic 4A WebWork Homework, which is accessible through a provided link. There are no submissions to be made on Canvas, but students should be aware of the listed due date. Grades for the WebWork Homework will be automatically imported to Canvas.",
+      "summary": "Complete the Topic 4A WebWork Homework as linked, noting the due date, with no submission required on Canvas as grades will be imported from WebWork.",
       "relevant_links": [
         {
           "url": "https://elearning.mines.edu/courses/72767/assignments/454216",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": true
     },
     {
       "name": "Topic 4B WebWork Homework",
@@ -320,13 +317,14 @@
       "html_url": "https://elearning.mines.edu/courses/72767/assignments/454220",
       "date": "2025-04-08T08:00:00-06:00",
       "course": "PHGN 200",
-      "summary": "The university assignment requires students to complete the Topic 4B WebWork Homework, which is linked and accessible outside of Canvas. There are no submissions required on Canvas, but students should be aware of the listed due date. The grades for the homework will be automatically imported to Canvas from WebWork.",
+      "summary": "The university assignment involves completing the Topic 4B WebWork Homework, which can be accessed through a provided link. Students do not need to submit anything on Canvas, but should be aware of the listed due date. The grades for the homework will be automatically imported to Canvas from WebWork.",
       "relevant_links": [
         {
           "url": "https://elearning.mines.edu/courses/72767/assignments/454220",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": true
     },
     {
       "name": "Topic 4C Studio Points",
@@ -340,7 +338,8 @@
           "url": "https://elearning.mines.edu/courses/72767/assignments/454223",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": false
     },
     {
       "name": "Quiz 5",
@@ -354,7 +353,8 @@
           "url": "https://elearning.mines.edu/courses/72767/assignments/454129",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": false
     },
     {
       "name": "Participation Quiz 16",
@@ -368,7 +368,8 @@
           "url": "https://elearning.mines.edu/courses/72125/assignments/482221",
           "title": "Canvas"
         }
-      ]
+      ],
+      "has_description": false
     }
   ],
   "grades": [
@@ -398,5 +399,5 @@
       "course_id": 72767
     }
   ],
-  "plan": "To manage the upcoming assignments, create a study plan with the following steps: \n\n1. **Prioritize** the assignments based on their deadlines, focusing on the earliest due dates first. Start with the LGA 24 and WebAssign Homework #9, which are due on Monday.\n2. **Allocate time blocks** for each assignment, considering the complexity and time required to complete them. Set aside dedicated time for studying and working on each task.\n3. **Create a daily study schedule**, starting from Sunday. Allocate time for reviewing and working on assignments, such as Change of Variables in Multiple Integrals, Heaps and priority queues, and WebAssign Homework #9.\n4. **Prepare for the Exam 2** on Thursday by reviewing relevant topics and practicing with sample questions.\n5. **Balance** study sessions with breaks to avoid burnout. Make sure to take time to rest and recharge, especially with multiple deadlines approaching.\n6. **Review and practice consistently**, focusing on one assignment at a time. Stay organized, and adjust the study plan as needed to ensure all deadlines are met."
+  "plan": "To tackle the upcoming assignments, I'll create a study plan that allocates time for each task. From Sunday to Friday, I'll dedicate 2-3 hours each day for studying and assignment completion. I'll start by focusing on the nearest deadlines: completing the Change of Variables in Multiple Integrals homework and LGA 24 on Sunday and Monday morning. Then, I'll allocate Monday evening for WebAssign Homework #9, Worksheet 10, and reviewing Heaps and priority queues. On Tuesday, I'll focus on Topic 3F and 3G WebWork Homework. As the week progresses, I'll prioritize Exam 2 preparation, studio points, and participation quizzes. I'll also make time for reviewing and completing worksheets, homework, and upcoming exam #2. By breaking down the tasks and allocating specific times for each, I'll stay on track and manage my workload effectively. Additionally, I'll review and practice consistently to ensure I'm well-prepared for the exams and quizzes."
 }

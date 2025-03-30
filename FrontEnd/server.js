@@ -35,5 +35,5 @@ fs.watch(jsonFilePath, (eventType, filename) => {
 
 // Start the server
 app.listen(port, '0.0.0.0', () => {
-  console.log(`Server is running on http://138.67.178.92:${port}`);
+  console.log(`Server is running on http://138.67.177.83:${port}`);
 });

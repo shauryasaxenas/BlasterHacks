@@ -33,7 +33,6 @@ async fn serve() -> Result<(), Box<dyn Error>> {
                 Ok(d) => {
                     data.assignments = d.assignments;
                     data.grades = d.grades;
-                    data.plan = d.plan;
                     data.serialize_to_file("data.json")?;
                     last_update = chrono::Utc::now();
                 }

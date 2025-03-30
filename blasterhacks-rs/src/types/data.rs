@@ -66,7 +66,7 @@ pub async fn groq_analysis(assignments: &mut Vec<Assignment>) -> Result<(), Box<
             for link in links {
                 a.relevant_links.push(link);
             }
-            match groq::get_summary(&description).await?.as_str() {
+            match groq::get_summary(&description, &a.name).await?.as_str() {
                 "No summary" => None,
                 s => Some(s.to_string()),
             }

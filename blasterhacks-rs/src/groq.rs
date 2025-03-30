@@ -36,8 +36,11 @@ pub async fn get_response(query: String) -> Result<String, Box<dyn Error>> {
 
 }
 
-pub async fn get_summary(description: &String) -> Result<String, Box<dyn Error>> {
-    let response = get_response("You will recieve HTML with that describes a certain university assignment. Summarize it and return a signle paragraph. If there is no relevant information simply reply with the words \"No summary\"".to_string() + &description).await?;
+pub async fn get_summary(description: &String, name: &String) -> Result<String, Box<dyn Error>> {
+    let mut response = get_response("You will recieve HTML with that describes a certain university assignment. Summarize it and return a signle paragraph. If there is no relevant information simply reply with the words \"No summary\"".to_string() + &description).await?;
+    if response == "No summary" {
+        response = get_response("You will recieve the name of a university assignment. Summarize what the assignment is about and return a single paragraph.".to_string() + &name).await?;
+    }
     return Ok(response);
 }
 

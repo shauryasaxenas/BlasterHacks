@@ -14,13 +14,9 @@ pub struct Data {
 
 impl Data {
     pub async fn from_course_ids(course_ids: Vec<u32>) -> Result<Self, Box<dyn std::error::Error>> {
-        println!("Fetching assignments and grades...");
         let mut assignments = crate::queries::assignments::query_assignments(&course_ids).await?;
-        println!("{} assignments found", assignments.len());
         let grades = crate::queries::grades::query_grades(&course_ids).await?;
-        println!("{} grades found", grades.len());
         groq_analysis(&mut assignments).await?;
-        println!("Groq analysis complete");
         let plan = groq::get_plan(&assignments).await?;
 
         Ok(Self { assignments, grades, plan })

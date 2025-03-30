@@ -24,8 +24,11 @@ use std::{
     time::{Duration, Instant},
 };
 use app::{App, Dir};
+use std::sync::Arc;
+use tokio::sync::Mutex;
 
-fn render_assignments<B: Backend>(f: &mut Frame<B>, app: &mut App, layout_chunk: Rect) {
+async fn render_assignments(app: Arc<Mutex<App>>) -> Table<'static> {
+    let app = app.lock().await;
     let bold = Style::default().fg(Color::White).add_modifier(Modifier::BOLD);
     let header_cells = ["Course", "Name", "Due Date"].iter().map(|h| Cell::from(*h));
     let header = Row::new(header_cells)
@@ -59,10 +62,11 @@ fn render_assignments<B: Backend>(f: &mut Frame<B>, app: &mut App, layout_chunk:
             Constraint::Ratio(6, 10),
             Constraint::Ratio(3, 10),
         ]);
-    f.render_stateful_widget(table, layout_chunk, &mut app.assignments_state);
+    return table;
 }
 
-fn render_grades<B: Backend>(f: &mut Frame<B>, app: &mut App, layout_chunk: Rect) {
+async fn render_grades(app: Arc<Mutex<App>>) -> Table<'static> {
+    let app = app.lock().await;
     let bold = Style::default().fg(Color::White).add_modifier(Modifier::BOLD);
     let header_cells = ["Course", "Grade"].iter().map(|h| Cell::from(*h));
     let header = Row::new(header_cells)
@@ -87,34 +91,35 @@ fn render_grades<B: Backend>(f: &mut Frame<B>, app: &mut App, layout_chunk: Rect
             Constraint::Ratio(1, 2),
             Constraint::Ratio(1, 2),
         ]);
-    f.render_stateful_widget(table, layout_chunk, &mut app.assignments_state);
+    return table;
 }
 
-fn render_welcome<B: Backend>(f: &mut Frame<B>, app: &mut App, layout_chunk: Rect) {
-    let welcome = Paragraph::new(format!("\nToday is {}, there are {} upcoming assignments", chrono::Local::now().format("%A %d %B"), app.data.assignments.len()))
+async fn render_welcome(app: Arc<Mutex<App>>) -> Paragraph<'static> {
+    let app = app.lock().await;
+    Paragraph::new(format!("\nToday is {}, there are {} upcoming assignments", chrono::Local::now().format("%A %d %B"), app.data.assignments.len()))
         .block(
             Block::default()
                 .borders(Borders::ALL)
                 .title("Welcome to CanvasTUI")
         )
         .alignment(Alignment::Center)
-        .wrap(Wrap { trim: true });
-    f.render_widget(welcome, layout_chunk);
+        .wrap(Wrap { trim: true })
 }
 
-fn render_plan<B: Backend>(f: &mut Frame<B>, app: &mut App, layout_chunk: Rect) {
-    let plan = Paragraph::new(app.data.plan.clone())
+async fn render_plan(app: Arc<Mutex<App>>) -> Paragraph<'static> {
+    let app = app.lock().await;
+    Paragraph::new(app.data.plan.clone())
         .block(
             Block::default()
                 .borders(Borders::ALL)
                 .title("Study Plan")
         )
         .alignment(Alignment::Left)
-        .wrap(Wrap { trim: true });
-    f.render_widget(plan, layout_chunk);
+        .wrap(Wrap { trim: true })
 }
 
-fn render_summary<B: Backend>(f: &mut Frame<B>, app: &mut App, layout_chunk: Rect) {
+async fn render_summary(app: Arc<Mutex<App>>) -> Paragraph<'static> {
+    let app = app.lock().await;
     let summary = if let Some(i) = app.assignments_state.selected() {
         let assignment = &app.data.assignments[i];
         let s = format!("Course: {}\nName: {}\nSummary: {}\n", assignment.course, assignment.name, assignment.summary.as_ref().unwrap_or(&"No summary".to_string()));
@@ -122,88 +127,78 @@ fn render_summary<B: Backend>(f: &mut Frame<B>, app: &mut App, layout_chunk: Rec
     } else {
         "No assignment selected".to_string()
     };
-    let info = Paragraph::new(summary)
+    Paragraph::new(summary)
         .block(
             Block::default()
                 .borders(Borders::ALL)
                 .title("Assignment Summary")
         )
         .alignment(Alignment::Left)
-        .wrap(Wrap { trim: true });
-
-    f.render_widget(info, layout_chunk);
+        .wrap(Wrap { trim: true })
 }
 
-fn render_links<B: Backend>(f: &mut Frame<B>, app: &mut App, layout_chunk: Rect) {
+async fn render_links(app: Arc<Mutex<App>>) -> List<'static> {
+    let app = app.lock().await;
     if let Some(i) = app.assignments_state.selected() {
         let links = app.data.assignments[i].relevant_links.clone().into_iter().map(|link| {
-            ListItem::new(link.title)
+            ListItem::new(link.title.clone())
         }).collect::<Vec<_>>();
-        if links.is_empty() {
-            let empty = Paragraph::new("No links available")
+        let selected_style = Style::default().fg(Color::LightGreen).add_modifier(Modifier::BOLD);
+            return List::new(links)
                 .block(
                     Block::default()
-                        .borders(Borders::ALL)
-                        .title("Links")
+                    .borders(Borders::ALL)
+                    .title("Links")
                 )
-                .alignment(Alignment::Left)
-                .wrap(Wrap { trim: true });
-            f.render_widget(empty, layout_chunk);
-            return;
-        }
-        let selected_style = Style::default().fg(Color::LightGreen).add_modifier(Modifier::BOLD);
-        let table = List::new(links)
-            .block(
-                Block::default()
-                .borders(Borders::ALL)
-                .title("Links")
-            )
-            .highlight_style(selected_style);
-        f.render_stateful_widget(table, layout_chunk, &mut app.links_state);
-        return;
+                .highlight_style(selected_style);
+    } else {
+        return List::new(vec![]).block(Block::default());
     }
-    let empty = Paragraph::new("No assignment selected")
-        .block(
-            Block::default()
-            .borders(Borders::ALL)
-            .title("Links")
-        )
-        .alignment(Alignment::Left)
-        .wrap(Wrap { trim: true });
-    f.render_widget(empty, layout_chunk);
 }
 
-fn render_default<B: Backend>(f: &mut Frame<B>, app: &mut App) {
-    let chunks = Layout::default()
-        .direction(Direction::Horizontal)
-        .constraints([Constraint::Ratio(2, 3), Constraint::Ratio(1, 3)].as_ref())
-        .split(f.size());
+async fn render_default<B: Backend>(terminal: &mut Terminal<B>, app: Arc<Mutex<App>>) {
+    let welcome = render_welcome(app.clone()).await;
+    let assignments = render_assignments(app.clone()).await;
+    let mut assignments_state = app.lock().await.assignments_state.clone();
+    let summary = render_summary(app.clone()).await;
+    let links = render_links(app.clone()).await;
+    let mut links_state = app.lock().await.links_state.clone();
+    let grades = render_grades(app.clone()).await;
+    let plan = render_plan(app.clone()).await;
 
-    let left_chunks = Layout::default()
-        .direction(Direction::Vertical)
-        .constraints([Constraint::Ratio(1, 10), Constraint::Ratio(6, 10), Constraint::Ratio(3, 10)].as_ref())
-        .split(chunks[0]);
+    let _ = terminal.draw(|f| {
+        let chunks = Layout::default()
+            .direction(Direction::Horizontal)
+            .constraints([Constraint::Ratio(2, 3), Constraint::Ratio(1, 3)].as_ref())
+            .split(f.size());
 
-    let right_chunks = Layout::default()
-        .direction(Direction::Vertical)
-        .constraints([Constraint::Ratio(3, 10), Constraint::Ratio(7, 10)].as_ref())
-        .split(chunks[1]);
+        let left_chunks = Layout::default()
+            .direction(Direction::Vertical)
+            .constraints([Constraint::Ratio(1, 10), Constraint::Ratio(6, 10), Constraint::Ratio(3, 10)].as_ref())
+            .split(chunks[0]);
 
-    let bottom_left_chunks = Layout::default()
-        .direction(Direction::Horizontal)
-        .constraints([Constraint::Ratio(1, 2), Constraint::Ratio(1, 2)].as_ref())
-        .split(left_chunks[2]);
+        let right_chunks = Layout::default()
+            .direction(Direction::Vertical)
+            .constraints([Constraint::Ratio(3, 10), Constraint::Ratio(7, 10)].as_ref())
+            .split(chunks[1]);
 
-    render_welcome(f, app, left_chunks[0]);
-    render_assignments(f, app, left_chunks[1]);
-    render_summary(f, app, bottom_left_chunks[0]);
-    render_links(f, app, bottom_left_chunks[1]);
-    render_grades(f, app, right_chunks[0]);
-    render_plan(f, app, right_chunks[1]);
+        let bottom_left_chunks = Layout::default()
+            .direction(Direction::Horizontal)
+            .constraints([Constraint::Ratio(1, 2), Constraint::Ratio(1, 2)].as_ref())
+            .split(left_chunks[2]);
+
+        f.render_widget(welcome, left_chunks[0]);
+        f.render_stateful_widget(assignments, left_chunks[1], &mut assignments_state);
+        f.render_widget(summary, bottom_left_chunks[0]);
+        f.render_widget(grades, right_chunks[0]);
+        f.render_stateful_widget(links, bottom_left_chunks[1], &mut links_state);
+        f.render_widget(plan, right_chunks[1]);
+    });
+
 }
 
 
-pub fn run(data: Data) -> Result<(), Box<dyn Error>>{
+pub async fn run(data: Data) -> Result<(), Box<dyn Error>>{
     // setup terminal
     enable_raw_mode()?;
     let mut stdout = io::stdout();
@@ -212,25 +207,25 @@ pub fn run(data: Data) -> Result<(), Box<dyn Error>>{
     let mut terminal = Terminal::new(backend)?;
 
     // create app and run it
-    let mut app = App::new(data, Duration::from_millis(1000));
+    let app = Arc::new(Mutex::new(App::new(data, Duration::from_millis(1000))));
 
     // Main loop and tick logic
     let mut last_tick = Instant::now();
     loop {
-        terminal.draw(|f| render_default(f, &mut app))?;
+        render_default(&mut terminal, Arc::clone(&app)).await;
 
         // Non-blocking key detection
-        let timeout = app
+        let timeout = app.lock().await
             .tick_rate
             .checked_sub(last_tick.elapsed())
             .unwrap_or(Duration::from_secs(0));
         if event::poll(timeout)? {
-            if handle_input(&mut app)? {
+            if handle_input(Arc::clone(&app)).await? {
                 break;
             }
         }
-        if last_tick.elapsed() >= app.tick_rate {
-            app.on_tick();
+        if last_tick.elapsed() >= app.lock().await.tick_rate {
+            app.lock().await.on_tick();
             last_tick = Instant::now();
         }
     }
@@ -248,16 +243,17 @@ pub fn run(data: Data) -> Result<(), Box<dyn Error>>{
     Ok(())
 }
 
-fn handle_input(app: &mut App) -> Result<bool, Box<dyn Error>> {
+async fn handle_input(app: Arc<Mutex<App>>) -> Result<bool, Box<dyn Error>> {
     if let Event::Key(key) = event::read()? {
         match key.modifiers {
             KeyModifiers::NONE => match key.code {
-                KeyCode::Char('j') => app.mv(Dir::Down),
-                KeyCode::Char('k') => app.mv(Dir::Up),
+                KeyCode::Char('j') => app.lock().await.mv(Dir::Down),
+                KeyCode::Char('k') => app.lock().await.mv(Dir::Up),
                 KeyCode::Char('q') => return Ok(true),
-                KeyCode::Char('o') => app.open(),
-                KeyCode::Enter => app.enter(),
-                KeyCode::Esc => app.esc(),
+                KeyCode::Char('o') => app.lock().await.open(),
+                KeyCode::Char('r') => app::refresh(app).await?,
+                KeyCode::Enter => app.lock().await.enter(),
+                KeyCode::Esc => app.lock().await.esc(),
                 _ => (),
             },
             KeyModifiers::CONTROL => match key.code {

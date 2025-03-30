@@ -18,7 +18,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     // types::data::groq_analysis(&mut data.assignments).await?;
     data.serialize_to_file("data.json")?;
     let res = ui::run(data);
-    match res {
+    match res.await {
         Ok(_) => (),
         Err(e) => eprintln!("Error: {}", e),
     }

@@ -1,7 +1,7 @@
 console.log("Script is working");
 
 let previousData = null; // Variable to store the previously fetched data
-
+var numOfAssignments = 0;
 function fetchData() {
     fetch("data.json")
     .then(response => response.json())
@@ -19,7 +19,7 @@ function fetchData() {
         let placeholderGrades = document.querySelector("#grade-output");
         let placeholderGroq = document.querySelector("#groq-output");
         let outAssignment = "", outGrade = "", outGroq = "";
-        var numOfAssignments = 0;
+        
 
         // Loop through assignments
         sections.assignments.forEach(assignment => {
@@ -144,7 +144,8 @@ function updateDateTime() {
     const now = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const formattedDate = now.toLocaleDateString(undefined, options);
-    dateBar.textContent = `${formattedDate}`;
+    const additionalText = " - Stay Focused & Keep Learning!";
+    dateBar.textContent = `Today is ${formattedDate}, you have ${numOfAssignments} Upcoming Assignments`;
 }
 
 setInterval(updateDateTime, 1000); // Update every second

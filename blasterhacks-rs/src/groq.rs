@@ -36,12 +36,14 @@ pub async fn get_response(query: String) -> Result<String, Box<dyn Error>> {
 
 }
 
-pub async fn get_summary(description: &String, name: &String) -> Result<String, Box<dyn Error>> {
+pub async fn get_summary(description: &String, name: &String) -> Result<(bool, String), Box<dyn Error>> {
+    let mut has_description: bool = true;
     let mut response = get_response("You will recieve HTML with that describes a certain university assignment. Summarize it and return a signle paragraph. If there is no relevant information simply reply with the words \"No summary\"".to_string() + &description).await?;
     if response == "No summary" {
+        has_description = false;
         response = get_response("You will recieve the name of a university assignment. Summarize what the assignment is about and return a single paragraph.".to_string() + &name).await?;
     }
-    return Ok(response);
+    return Ok((has_description, response));
 }
 
 pub async fn get_links(description: &String) -> Result<Vec<Link>, Box<dyn Error>> {

@@ -22,7 +22,22 @@ async fn run_tui() -> Result<(), Box<dyn Error>> {
 async fn serve() -> Result<(), Box<dyn Error>> {
     let course_ids = vec![72125, 71983, 72567, 71447, 72767]; // Henry course ids
     // let course_ids = vec![71983, 72567, 71415, 72131]; // Shaurya course ids
-    let mut data = Data::deserialize_from_file("data.json")?;
+    let mut data = match Data::deserialize_from_file("data.json") {
+        Ok(data) => data,
+        Err(_) => {
+            println!("No data found, fetching from course ids...");
+            match Data::from_course_ids(course_ids.clone(), true).await {
+                Ok(d) => {
+                    d.serialize_to_file("data.json")?;
+                    d
+                }
+                Err(e) => {
+                    eprintln!("Error fetching data: {}", e);
+                    return Err(e);
+                }
+            }
+        }
+    };
 
     // refresh data every minute
     let mut last_update: DateTime<chrono::Utc> = chrono::DateTime::UNIX_EPOCH;

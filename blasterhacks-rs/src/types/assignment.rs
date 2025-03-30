@@ -11,6 +11,7 @@ pub struct Assignment {
     pub course: String,
     pub summary: Option<String>,
     pub relevant_links: Vec<Link>,
+    pub has_description: bool,
 }
 
 impl Assignment {
@@ -35,6 +36,7 @@ impl Assignment {
             course,
             summary: None,
             relevant_links: vec![],
+            has_description: false,
         })
     }
 }

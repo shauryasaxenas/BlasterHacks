@@ -157,10 +157,9 @@ impl App {
 pub async fn refresh(app: Arc<Mutex<App>>) -> Result<(), Box<dyn Error>> {
     let app_clone = Arc::clone(&app);
     let handle = tokio::task::spawn(async move {
-
         let course_ids = vec![72125, 71983, 72567, 71447, 72767]; // Henry course IDs
         let data;
-        match Data::from_course_ids(course_ids).await {
+        match Data::from_course_ids(course_ids, false).await {
             Ok(d) => data = d,
             Err(e) => {
                 eprintln!("Error fetching data: {}", e);
@@ -170,6 +169,8 @@ pub async fn refresh(app: Arc<Mutex<App>>) -> Result<(), Box<dyn Error>> {
         let mut app = app_clone.lock().await;
         app.data = data;
     });
+    handle.await?;
+    app.lock().await.data.serialize_to_file("data.json")?;
     
     Ok(())
 }

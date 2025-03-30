@@ -6,6 +6,7 @@ edition = "2024"
 [dependencies]
 chrono = { version = "0.4.40", features = ["serde"] }
 crossterm = "0.28.1"
+dotenv = "0.15.0"
 graphql_client = { version = "0.14.0", features = ["reqwest", "graphql_query_derive"] }
 open = "5.3.2"
 reqwest = { version = "0.12.15", features = ["json"] }

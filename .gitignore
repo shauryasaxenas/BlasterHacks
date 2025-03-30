@@ -1,6 +1,6 @@
 blasterhacks-rs/Cargo.lock
 blasterhacks-rs/target/
-blasterhacks-rs/envvars
+blasterhacks-rs/.env
 
 # Ignore .DS_Store
 .DS_Store

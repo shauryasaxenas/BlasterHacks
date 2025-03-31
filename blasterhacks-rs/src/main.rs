@@ -20,8 +20,8 @@ async fn run_tui() -> Result<(), Box<dyn Error>> {
 }
 
 async fn serve() -> Result<(), Box<dyn Error>> {
-    let course_ids = vec![72125, 71983, 72567, 71447, 72767]; // Henry course ids
-    // let course_ids = vec![71983, 72567, 71415, 72131]; // Shaurya course ids
+    // let course_ids = vec![72125, 71983, 72567, 71447, 72767]; // Henry course ids
+    let course_ids = vec![71983, 72567, 71415, 72131]; // Shaurya course ids
     let mut data = match Data::deserialize_from_file("data.json") {
         Ok(data) => data,
         Err(_) => {

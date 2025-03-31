@@ -4,9 +4,14 @@ query GetAssignments($courseId: ID!) {
             assignmentsConnection {
                 nodes {
                     name
-                        description
-                        htmlUrl
-                        dueAt
+                    description
+                    htmlUrl
+                    dueAt
+                    submissionsConnection {
+                        nodes {
+                            submissionStatus
+                        }
+                    }
                 }
             }
         courseNickname

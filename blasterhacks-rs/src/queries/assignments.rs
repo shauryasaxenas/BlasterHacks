@@ -58,14 +58,17 @@ fn parse_assignments(responses: Vec<get_assignments::ResponseData>) -> Result<Ve
             // Iterate over assignments
             for a in course.assignments_connection.unwrap().nodes.unwrap() {
                 let a = a.unwrap();
+                if a.submissions_connection.unwrap().nodes.unwrap().len() != 0 {
+                    continue;
+                }
                 let assignment: Assignment = 
                     Assignment::new(
                         a.name.clone().unwrap(),
-                    course.course_nickname.clone(),
-                    a.description,
-                    a.html_url.clone().unwrap(),
-                    a.due_at,
-                    course.name.clone()
+                        course.course_nickname.clone(),
+                        a.description,
+                        a.html_url.clone().unwrap(),
+                        a.due_at,
+                        course.name.clone()
                     )?;
                 if let Some(due) = assignment.date {
                     // If assignment due within 14 days, add to list

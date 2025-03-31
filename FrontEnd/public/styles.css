@@ -136,6 +136,21 @@ table tr:nth-child(even) {
     transition: all 0.3s ease-in-out;
 }
 
+.chart-container {
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    margin: auto;
+    background-color: #FBE9D0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rbga(0,0,0,0.1);
+}
+
+.contact {
+    
+}
+
 /* Grade Table Styling */
 #grade-output td {
     background-color: #FBE9D0;

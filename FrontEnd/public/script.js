@@ -1,5 +1,3 @@
-console.log("Script is working");
-
 let previousData = null; // Variable to store the previously fetched data
 var numOfAssignments = 0;
 function fetchData() {
@@ -8,17 +6,19 @@ function fetchData() {
     .then(sections => {
         // Compare the new data with the previous data
         if (JSON.stringify(sections) === JSON.stringify(previousData)) {
-            console.log("No update in data, skipping page refresh.");
             return; // No change in data, do nothing
         }
 
         // If there's new data, update the page
         previousData = sections; // Store the new data
+        numOfAssignments = 0;
 
         let placeholderAssignment = document.querySelector("#assignment-output");
         let placeholderGrades = document.querySelector("#grade-output");
         let placeholderGroq = document.querySelector("#groq-output");
         let outAssignment = "", outGrade = "", outGroq = "";
+
+        let courseAssignments = {};
         
 
         // Loop through assignments

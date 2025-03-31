@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
     <title>Welcome To Canvas Lite</title>
 </head>
 <body>
 
     <!-- Date and Time Bar -->
-    <div id="date-bar">
-    </div>
+    <div id="date-bar"></div>
 
 
     <div class="container">
@@ -48,8 +48,15 @@
                 <!-- Groq AI output from JS file in here -->
                 </tbody>
             </table>
+
+            <div class="chart-container">
+                <canvas id="assignment-chart"></canvas>
+            </div>
         </div>
     </div>
+
+    <div class = "contact"> <a href="https://forms.gle/CCVgwWsd3ZNQKhGYA" target="_blank">Contact Us</a></div>
+</div>
     <script src="script.js"></script> <!-- Link to the JavaScript file -->
 </body>
 </html>

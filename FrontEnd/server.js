@@ -3,6 +3,24 @@ const path = require('path');
 const fs = require('fs');
 const app = express();
 const port = 3000;
+const os = require('os');
+const networkInterfaces = os.networkInterfaces();
+
+let ipAddress;
+
+for (const name of Object.keys(networkInterfaces)) {
+  for (const net of networkInterfaces[name]) {
+    // Skip over non-IPv4 and internal (loopback) addresses
+    if (net.family === 'IPv4' && !net.internal) {
+      ipAddress = net.address;
+      // Stop searching after finding the first valid IP
+      break;
+    }
+  }
+  if (ipAddress) {
+    break;
+  }
+}
 
 // Define the path to the JSON file
 const jsonFilePath = path.join(__dirname, 'public', 'data.json');
@@ -35,5 +53,5 @@ fs.watch(jsonFilePath, (eventType, filename) => {
 
 // Start the server
 app.listen(port, '0.0.0.0', () => {
-  console.log(`Server is running on http://138.67.177.83:${port}`);
+  console.log(`Server is running on http://${ipAddress}:${port}`);
 });

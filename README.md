@@ -14,3 +14,6 @@ The terminal user interface was also written in Rust with a keyboard-centric and
 - Written in Rust so there was a lot of fighting the compiler
 - Nobody in our group had significant web experience so we had to learn as we went when creating the web interface
 - Rust async concurrency is hard
+
+
+To run the TUI

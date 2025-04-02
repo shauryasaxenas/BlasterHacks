@@ -1,8 +1,14 @@
 let previousData = null; // Variable to store the previously fetched data
 var numOfAssignments = 0;
 function fetchData() {
-    fetch("data.json")
-    .then(response => response.json())
+    fetch("/Users/shauryasaxena/Documents/Hackathon/blasterhacks-rs/data.json")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`File not found of inaccessible: ${response.status} ${response.statusText}`);
+        }
+        return response.json()
+    })
+
     .then(sections => {
         // Compare the new data with the previous data
         if (JSON.stringify(sections) === JSON.stringify(previousData)) {

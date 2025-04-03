@@ -16,4 +16,9 @@ The terminal user interface was also written in Rust with a keyboard-centric and
 - Rust async concurrency is hard
 
 
-To run the TUI
+To run the TUI:
+
+If RUST isn't downloaded, run the command:
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```

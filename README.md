@@ -22,3 +22,4 @@ If RUST isn't downloaded, run the command:
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
+then

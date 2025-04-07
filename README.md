@@ -1,25 +1,77 @@
-## Inspiration
-Our team recognized that canvas, a tool that students use every single day, is clunky and slow. This insired us to improve upon canvas to present the information that students actually need from canvas in a manner that is user-friendly and blazingly fast.
+CANVAS.LTE
 
-## What it does
-Our solution wraps the core functionality of canvas, assignments and grades, and presents it to the user in a single interface with no loading or clunky UI. Our solution also aggregates canvas data to provide users with AI-powered assignment summaries and a study plan for their convienience.
+Empower your learning journey with seamless organization.
 
-## How we built it
-At its core, our solution is a wrapper around the canvas API with enhanced features and novel interfaces. The team used Rust to query the users canvas and organize the retrieved data. Rust also itegrates with groq's platform to provide analysis on each assignment and the student's workload as a whole.
+last-commit repo-top-language repo-language-count
+Built with the tools and technologies:
 
-The terminal user interface was also written in Rust with a keyboard-centric and speed emphasis allowing for technical users to navigate their assignments in a blazingly fast manner. While most of the data is presented to you in app, the interface also provides links back to relevant course resources and the canvas page itself to make submissions.The team also created a web iterface to make the took accessable to non-technical users. The web interface has the same data as the terminal interface.
+Express JSON Rust npm TOML
+.ENV JavaScript CSS GraphQL TUI
 
-## Challenges we ran into
-- The canvas API is really awful and self-referencing
-- Written in Rust so there was a lot of fighting the compiler
-- Nobody in our group had significant web experience so we had to learn as we went when creating the web interface
-- Rust async concurrency is hard
+Table of Contents
 
+Overview
+Getting Started
+Prerequisites
+Installation
+Usage
+Testing
+Overview
 
-To run the TUI:
+canvas.lte is a powerful developer tool designed to streamline the management of educational assignments, making it easier for students and educators to stay organized.
 
-If RUST isn't downloaded, run the command:
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-then
+Why canvas.lte?
+
+This project enhances the educational experience by providing a structured way to manage assignments and grades. The core features include:
+
+📅 Structured Data Management: Easily access and update assignment information stored in a clear JSON format.
+💻 Dynamic User Interface: Engage with a responsive terminal user interface (TUI) for seamless navigation of assignments and grades.
+🔄 Real-Time Updates: Stay informed with dynamic reflections of changes in assignment data, ensuring you always have the latest information.
+📊 GraphQL Integration: Streamline backend interactions with a well-defined GraphQL API for efficient data retrieval and manipulation.
+📝 Comprehensive Assignment Details: Access essential information like due dates and descriptions, improving clarity and organization.
+Getting Started
+
+Prerequisites
+
+This project requires the following dependencies:
+
+Programming Language: Rust
+Package Manager: Cargo, Npm
+Installation
+
+Build canvas.lte from the source and intsall dependencies:
+
+Clone the repository:
+
+❯ git clone https://github.com/shauryasaxenas/canvas.lte
+Navigate to the project directory:
+
+❯ cd canvas.lte
+Install the dependencies:
+
+Using cargo:
+
+❯ cargo build
+Using npm:
+
+❯ npm install
+Usage
+
+Run the project with:
+
+Using cargo:
+
+cargo run
+Using npm:
+
+npm start
+Testing
+
+Canvas.lte uses the {test_framework} test framework. Run the test suite with:
+
+Using cargo:
+
+cargo test
+Using npm:
+
+npm test

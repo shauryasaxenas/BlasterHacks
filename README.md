@@ -206,7 +206,7 @@ Distributed under the project_license. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [LinkedInHandle](https://www.linkedin.com/in/shauryasaxena03) - shaurya_saxena@mines.edu
+Shaurya Saxena - [LinkedInHandle](https://www.linkedin.com/in/shauryasaxena03) - shaurya_saxena@mines.edu
 
 Project Link: [https://github.com/shauryasaxenas/canvas.lte](https://github.com/shauryasaxenas/canvas.lte)
 

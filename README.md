@@ -100,7 +100,7 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-##How To Use
+## How To Use
 Website currently under devlopment!
 
 

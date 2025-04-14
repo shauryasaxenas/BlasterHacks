@@ -37,7 +37,7 @@
 <h3 align="center">Canvas.LTE</h3>
 
   <p align="center">
-    This project is a fast, user-friendly alternative to Canvas, focused on simplifying the student experience. It wraps the core functionality of Canvas—assignments and grades—into a single, streamlined interface. Alongside this, it provides AI-powered assignment summaries and a personalized study plan to help students manage their workload more effectively.
+    This project is a fast, user-friendly alternative to Canvas, focused on simplifying the student experience. It wraps the core functionality of Canvas (assignments and grades) into a single, streamlined interface. Alongside this, it provides AI-powered assignment summaries and a personalized study plan to help students manage their workload more effectively.
     <br />
     <a href="https://github.com/shauryasaxenas/canvas.lte"><strong>Explore the docs »</strong></a>
     <br />

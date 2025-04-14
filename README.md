@@ -34,7 +34,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">Canvas.LTE</h3>
 
   <p align="center">
     project_description
@@ -98,6 +98,7 @@ Here's a blank template to get started. To avoid retyping too much info, do a se
 * [![HTML][HTML5]][HTML5-url]
 * [![CSS][CSS3]][Css3-url]
 * [![Node][Node.js]][Node-url]
+* [![GraphQL][GraphQL]][GraphQL-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -246,3 +247,5 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [Css3-url]: https://css3.com
 [Node.js]: https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white
 [Node-url]: https://nodejs.org/en
+[GraphQL]: https://img.shields.io/badge/-GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white
+[GraphQL-url]: https://graphql.org

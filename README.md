@@ -185,8 +185,8 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 -->
-
-### Top contributors:
+<!-- When Uncommenting contributors, add extra # in Top Contributors -->
+## Top contributors: 
 
 <a href="https://github.com/shauryasaxenas/canvas.lte/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=shauryasaxenas/canvas.lte" alt="contrib.rocks image" />

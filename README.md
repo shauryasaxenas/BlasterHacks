@@ -100,6 +100,9 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+##How To Use
+Website currently under devlopment!
+
 
 
 <!-- GETTING STARTED -->
@@ -212,11 +215,12 @@ Project Link: [https://github.com/shauryasaxenas/canvas.lte](https://github.com/
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+<!--## Acknowledgments
 
 * []()
 * []()
 * []()
+-->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

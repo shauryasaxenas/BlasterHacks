@@ -229,7 +229,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/shauryasaxenas/canvas.lte.svg?style=for-the-badge
 [contributors-url]: https://github.com/shauryasaxenas/canvas.lte/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/shauryasaxenas/cavnas.lte.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/shauryasaxenas/canvas.lte.svg?style=for-the-badge
 [forks-url]: https://github.com/shauryasaxenas/canvas.lte/network/members
 [stars-shield]: https://img.shields.io/github/stars/shauryasaxenas/canvas.lte.svg?style=for-the-badge
 [stars-url]: https://github.com/shauryasaxenas/canvas.lte/stargazers

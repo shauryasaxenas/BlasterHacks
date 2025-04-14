@@ -197,7 +197,11 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the project_license. See `LICENSE.txt` for more information.
+<!--Distributed under the project_license. See `LICENSE.txt` for more information. -->
+This project is not licensed for public or private use.
+All rights are reserved by the author. You may not copy, modify, distribute, sublicense, or use any part of this codebase for any purpose without explicit written permission.
+
+If you're interested in using this code or collaborating, please contact me directly.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

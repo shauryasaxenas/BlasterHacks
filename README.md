@@ -30,7 +30,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/shauryasaxenas/canvas.lte">
+  <a href="https://github.com/shauryasaxenas/canvas.lte/blob/main/Canvas.LTE.png">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
